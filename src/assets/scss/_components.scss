@@ -1,0 +1,544 @@
+@use 'foundation/variable' as *;
+//変数
+$drawer-menu-color: rgba(40, 70, 120, 1);
+$drawer-bg-color: rgba(40, 70, 120, 0.7);
+$transition-duration: .3s;
+
+// ボタン
+.c-button {
+  position: relative;
+  background: $pink;
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 0 0 #880045;
+  width: 80%;
+  max-width: 400px;
+  line-height: 44px;
+  font-size: 1.125rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  text-decoration: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+  span {
+    // padding-left: -36px;
+    position: relative;
+
+    &:before {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: -36px;
+      transform: translateY(-45%);
+      content: "";
+      background-size: contain;
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  &:active {
+    box-shadow: none;
+    transform: translateY(4px);
+  }
+
+  &--blue {
+    @extend .c-button;
+    background: $main-color;
+    box-shadow: 0 4px 0 0 $dark-blue;
+  }
+
+  &--tel {
+    @extend .c-button;
+
+    span {
+      &:before {
+        background-image: url("../images/icon/icon_tel.png");
+      }
+    }
+  }
+
+  &--mail {
+    @extend .c-button;
+
+    span {
+      &:before {
+        background-image: url("../images/icon/icon_mail.png");
+      }
+    }
+  }
+
+  // 2段組レイアウト時
+  &--top {
+    margin-bottom: 1.5rem;
+
+    @include mq() {
+      margin-bottom: 0;
+    }
+  }
+
+  &__bottom {
+    @extend .c-button;
+    width: 270px;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    box-shadow: none;
+    transform: translateX(-50%);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    z-index: 102;
+
+    &:active {
+      transform: translateX(-50%);
+    }
+
+    @include mq() {
+      top: 0;
+      background: $main-color;
+      bottom: auto;
+      left: auto;
+      right: 4vw;
+      transform: translateY(0);
+      height: 50px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  // go to top
+  &__goToTop {
+    position: absolute;
+    background: white;
+    color: $main-color;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    text-align: center;
+    top: 20px;
+    right: 20px;
+    z-index: 10001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    figure {
+      width: 14.73px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @include mq() {
+      width: 70px;
+      height: 70px;
+      line-height: 70px;
+      font-size: 1rem;
+      top: auto;
+      bottom: 2rem;
+      right: 2rem;
+
+      figure {
+        width: 34.38px;
+      }
+    }
+  }
+}
+
+// タイトル
+.c-title {
+  &__lv2 {
+    color: $main-color;
+    font-size: 1.375rem;
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 3rem;
+
+    @include mq() {
+      font-size: 1.625rem;
+      margin-bottom: 4rem;
+    }
+  }
+
+  // 角丸タイトル
+  &__label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    background: $main-color;
+    height: 90px;
+    border-radius: 45px;
+    // width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  // 背景画像ありタイトル
+  &__lv3 {
+    background-image: url("../images/parts/title.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 165px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    line-height: 75px;
+    font-size: 1.125rem;
+    font-weight: var(--bold);
+    color: white;
+    margin-top: calc(-2rem + -55px);
+    margin-bottom: 2rem;
+
+    @include mq() {
+      font-size: 36px;
+      width: 350px;
+      height: 160px;
+      line-height: 160px;
+      margin-top: calc(-9rem + (-160px / 2));
+    }
+
+    &--lg {
+      @extend .c-title__lv3;
+
+      @include mq() {
+        font-size: 44px;
+      }
+    }
+  }
+
+  &__box {
+    color: $main-color;
+    font-size: 1.125rem;
+    letter-spacing: 0.15em;
+    text-align: center;
+    line-height: 1.5;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 4px dotted #E7F1F6;
+
+    @include mq() {
+      font-size: 1.375rem;
+    }
+
+    &--no-border {
+      @extend .c-title__box;
+      font-size: 1.375rem;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-top: 5rem;
+      margin-bottom: 0.75rem;
+
+      @include mq() {
+        margin-top: 5.5rem;
+        font-size: 44px;
+      }
+    }
+  }
+
+  &__flow {
+    @extend .c-title__box;
+
+    @include mq() {
+      font-size: 44px;
+    }
+  }
+
+  &__contact {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0;
+
+    @include mq() {
+      font-size: 26px;
+    }
+  }
+
+  &__map {
+    @extend .c-title__lv3;
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0;
+    width: 165px;
+    z-index: 101;
+
+    @include mq() {
+      font-size: 36px;
+      width: 350px;
+      height: 160px;
+      line-height: 160px;
+      margin-top: -75px;
+    }
+  }
+
+  &__ig {
+    @extend .c-title__lv3;
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    @include mq() {
+      margin-top: -10rem;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: .5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background-image: url("../images/icon/icon_ig.png");
+      background-size: contain;
+      width: 20px;
+      height: 20px;
+
+      @include mq() {
+        top: 1.5rem;
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 1rem;
+      right: -100px;
+      background-image: url("../images/parts/followme.png");
+      background-size: contain;
+      width: 95px;
+      height: 72px;
+
+      @include mq() {
+        top: -1rem;
+        right: -300px;
+        width: 252px;
+        height: 190px;
+
+      }
+    }
+  }
+}
+
+// リスト
+.c-list {
+  &__blue {
+    li {
+      font-size: 0.875rem;
+
+      @include mq() {
+        font-size: 0.75rem;
+      }
+    }
+
+    li,
+    dt {
+      &:before {
+        content: "●";
+        color: $main-color;
+      }
+    }
+  }
+}
+
+// エラー表示
+.c-form-error {
+  &__list {
+    padding: 10px 30px;
+    color: #ff2e5a;
+    font-size: 86%;
+    text-align: left;
+    border: 1px solid #ff2e5a;
+    border-radius: 5px;
+  }
+}
+
+// アイコン
+.c-icon {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .25rem;
+    margin-top: 1rem;
+    font-size: 0.75rem;
+
+    li {
+      padding: .25rem .5rem;
+
+      &:not(:last-child) {
+        border: 1px solid $main-color;
+        border-radius: .25rem;
+        color: $main-color;
+      }
+    }
+  }
+}
+
+//ドロワー
+.c-drawer {
+
+  //ボタン
+  &__btn {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 10002;
+    width: 63px;
+    height: 60px;
+    margin-top: 10px;
+    margin-right: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    overflow: hidden;
+    cursor: pointer;
+
+    span {
+      display: block;
+      width: 23px;
+      height: 2px;
+      background-color: $text-color;
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transition: $transition-duration;
+
+      &:nth-child(1) {
+        transform: translate(-50%, -12px);
+      }
+
+      &:nth-child(2) {
+        transform: translate(-50%, -50%);
+      }
+
+      &:nth-child(3) {
+        transform: translate(-50%, 12px);
+      }
+    }
+
+    //アクティブ時
+    &.active {
+      background-color: transparent;
+
+      span {
+        background-color: white;
+
+        &:nth-child(1) {
+          transform: translate(-50%, 0) rotate(45deg);
+        }
+
+        &:nth-child(2) {
+          transform: translate(100%, 0);
+          opacity: 0;
+        }
+
+        &:nth-child(3) {
+          transform: translate(-50%, 0) rotate(-45deg);
+        }
+      }
+    }
+
+    @include mq() {
+      display: none;
+    }
+  }
+
+  //メニュー
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 10001;
+    width: 350px;
+    height: 100vh;
+    overflow-y: auto;
+    background-color: $drawer-menu-color;
+    transition: $transition-duration;
+    transform: translateX(100%);
+    opacity: 0;
+
+    //アクティブ時
+    &.active {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  // ナビ
+  &__nav {
+    padding: 5rem 2rem;
+    color: white;
+
+    li {
+      line-height: 3;
+    }
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  //背景
+  &__bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    width: 100%;
+    height: 100vh;
+    background-color: $drawer-bg-color;
+    transition: $transition-duration;
+    transform: translateX(100%);
+    opacity: 0;
+    cursor: pointer;
+
+    //アクティブ時
+    &.active {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+}
+
+// マップ
+.c-map {
+  &__wrap {
+    position: relative;
+    margin-top: 6rem;
+
+    @include mq() {
+      margin-top: 10.5rem;
+    }
+  }
+
+  height: 600px;
+  width: 100%;
+  margin-top: 0.75rem;
+
+  @include mq() {
+    height: 760px;
+  }
+}
+
+// 背景のみ
+.c-bg {
+  &__blue {
+    background-image: url("../images/bg/bg_light_blue.jpg");
+    background-repeat: repeat;
+    background-size: 250px 250px;
+  }
+}

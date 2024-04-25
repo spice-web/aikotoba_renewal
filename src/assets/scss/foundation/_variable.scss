@@ -1,0 +1,26 @@
+$text-color: #4C4948;
+$main-color: #008BCD;
+$pink: #FF5995;
+$light-blue: #E7F1F6;
+$dark-blue: #284678;
+
+:root {
+  --bold: 700;
+}
+
+/* ==============================
+  || breakpoints
+============================== */
+$breakpoints: (
+  'xs': 'screen and (max-width: 374px)',
+  'sm': 'screen and (min-width: 650px)',
+  'md': 'screen and (min-width: 850px)',
+  'lg': 'screen and (min-width: 1000px)',
+  'xl': 'screen and (min-width: 1200px)',
+  ) !default;
+
+@mixin mq($breakpoint: md) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}

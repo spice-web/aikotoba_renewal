@@ -1,0 +1,69 @@
+@use 'foundation/variable' as *;
+
+// font
+.u-fz {
+  font-size: 0.875rem;
+
+  @include mq() {
+    font-size: 1rem;
+  }
+
+  &--lg {
+    font-size: 1rem;
+
+    @include mq() {
+      font-size: 1.325rem;
+    }
+  }
+}
+
+.u-fz-lg {
+  font-size: 1.375rem;
+}
+
+.u-color {
+  &__main {
+    color: $main-color;
+  }
+
+  &__dark-blue {
+    color: $dark-blue;
+  }
+}
+
+// padding
+.u-pb0 {
+  padding: 0;
+}
+
+// margin
+.u-mg0 {
+  margin: 0;
+}
+
+.u-mb {
+  &--lg {
+    margin-bottom: 2rem;
+
+    @include mq() {
+      margin-bottom: 4.5rem;
+    }
+  }
+}
+
+// gap
+.u-gap10 {
+  gap: 1rem;
+}
+
+.u-gap15 {
+  gap: 1.5rem;
+}
+
+.u-gap20 {
+  gap: 2rem;
+}
+
+.u-no-border {
+  border: none;
+}

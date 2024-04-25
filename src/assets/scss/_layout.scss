@@ -1,0 +1,439 @@
+@use 'foundation/variable' as *;
+
+.l-main {}
+
+.l-header {
+  height: 80px;
+  padding: 0 0 0 4vw;
+  display: flex;
+  align-items: center;
+
+  @include mq() {
+    height: 150px;
+  }
+
+  &__logo {
+    display: block;
+    width: auto;
+    height: 50px;
+  }
+
+  &__nav {
+    display: none;
+
+    @include mq() {
+      display: flex;
+      margin-left: auto;
+      margin-right: 4vw;
+      color: $main-color;
+      font-weight: bold;
+      gap: 1vw;
+      font-size: 0.875rem;
+      align-self: flex-end;
+      margin-bottom: 40px;
+
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+// お問い合わせブロック
+.l-contact {
+  &__box {
+    border-radius: 12px;
+    margin-top: 9rem;
+    padding: 3rem 1.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    background: white;
+    color: #4C4948;
+
+    @include mq() {
+      background-color: transparent;
+      background-image: url(../assets/images/bg/bg_w.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+      grid-template-rows: 45px 200px;
+      aspect-ratio: 108 / 49;
+      place-content: center;
+      place-items: center;
+      max-width: 1080px;
+      margin-top: 8rem;
+      margin-left: auto;
+      margin-right: auto;
+      row-gap: 1rem;
+
+      .c-title__contact {
+        grid-column: 1 / 4;
+      }
+    }
+  }
+
+  &__head,
+  &__foot {
+    width: 100%;
+  }
+
+  &__head {
+    margin-bottom: 4rem;
+
+    @include mq() {
+      margin-bottom: 0;
+    }
+  }
+
+  &__border {
+    display: none;
+
+    @include mq() {
+      display: block;
+      background-color: $dark-blue;
+      width: 1px;
+      height: 100%;
+    }
+  }
+
+  &__tel {
+    position: relative;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__tel-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__mail {
+    @extend .l-contact__tel;
+    padding: 0;
+    margin: 0;
+    margin-bottom: .5rem;
+    display: block;
+    font-size: 1.375rem;
+    text-align: center;
+
+    &:before {
+      content: none;
+    }
+  }
+
+  &__button {
+    margin-top: 1rem;
+  }
+}
+
+.l-footer {
+  position: relative;
+  color: white;
+  background: $main-color;
+  font-size: .75rem;
+  padding-bottom: 4.5rem;
+
+  @include mq() {
+    padding-bottom: 1rem;
+  }
+
+  &__inner {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2.5rem 2.5rem 3.5rem;
+
+    @include mq() {
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+    }
+  }
+
+  &__logo-wrap {
+    @include mq() {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    @include mq(lg) {
+      flex-direction: row;
+      justify-content: center;
+      align-items: end;
+      gap: 2rem;
+    }
+  }
+
+  &__logo {
+    background-image: url("../assets/images/logo/logo_up_w.png");
+    background-size: contain;
+    display: block;
+    width: 257.5px;
+    height: 106px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include mq() {
+      background-image: url("../assets/images/logo/logo_side_w.png");
+      width: 400px;
+      height: 80px;
+    }
+  }
+
+  &__contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+
+    @include mq() {
+      align-items: end;
+      margin-top: 0;
+      margin-bottom: .65rem;
+    }
+  }
+
+  &__info {
+    margin-bottom: 2rem;
+
+    @include mq() {
+      margin-top: 1rem;
+      margin-left: 5rem;
+    }
+  }
+
+  &-nav {
+    font-size: 0.875rem;
+    // margin-left: .25rem;
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+    border-top: 1px solid #FFF;
+    border-bottom: 1px solid #FFF;
+
+    @include mq() {
+      display: grid;
+      grid-template-columns: auto auto;
+      padding-top: 2.25rem;
+      border-top: none;
+      column-gap: .5rem;
+    }
+
+    &__item {
+      a {
+        text-decoration: none;
+      }
+
+      &:before {
+        content: "●";
+      }
+    }
+  }
+
+  &__company-logo {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 1rem;
+
+    img {
+      max-width: 195px;
+    }
+  }
+
+  &__copy {
+    font-size: 0.625rem;
+    text-align: center;
+  }
+}
+
+.l-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &--center {
+    @extend .l-flex;
+    justify-content: center;
+  }
+
+  &--left {
+    @extend .l-flex;
+    justify-content: flex-start;
+  }
+
+  &--right {
+    @extend .l-flex;
+    justify-content: flex-end;
+  }
+
+  &-pc {
+    @include mq() {
+      display: flex;
+
+      &--end {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      &--sb {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+}
+
+.l-grid {
+  display: grid;
+  align-items: center;
+
+  &--col2 {
+    @extend .l-grid;
+    grid-template-columns: 1fr 1fr;
+
+    &-auto {
+      @extend .l-grid--col2;
+      grid-template-columns: auto auto;
+    }
+  }
+
+  &--center {
+    @extend .l-grid;
+    justify-content: center;
+  }
+
+  &--left {
+    @extend .l-grid;
+    justify-content: flex-start;
+  }
+
+  &--right {
+    @extend .l-grid;
+    justify-content: flex-end;
+  }
+
+  &-pc {
+    @include mq() {
+      display: grid;
+
+      &--col2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        &-auto {
+          display: grid;
+          grid-template-columns: auto auto;
+        }
+      }
+
+      &--col3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+
+        &-auto {
+          grid-template-columns: auto auto auto;
+          display: grid;
+        }
+      }
+    }
+
+  }
+}
+
+.l-inner {
+  max-width: calc(1280px + 2rem * 2);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 2rem 3rem;
+
+  @include mq() {
+    margin-bottom: 2rem;
+  }
+
+  &--blue {
+    // padding: 1rem 2rem 3rem;
+    // background-image: url("../images/bg/bg_light_blue.jpg");
+    // background-repeat: repeat;
+    // background-size: 500px 500px;
+    // color: white;
+  }
+
+  &--lg {
+    margin-bottom: 0;
+    @extend .l-inner;
+    padding: 1rem .75rem 3rem;
+  }
+}
+
+.l-box {
+  border-radius: 12px;
+  padding: 3rem 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  background: white;
+  color: $text-color;
+
+  &:not(:last-child) {
+    margin-bottom: 2.5rem;
+  }
+
+  // タイトル付のボックス
+  &--title {
+    @extend .l-box;
+    margin-top: 5rem;
+
+    @include mq() {
+      margin-top: 10rem;
+    }
+  }
+
+  &--blue {
+    @extend .l-box;
+    background-image: url("../images/bg/bg_light_blue.jpg");
+    background-repeat: repeat;
+
+    @include mq() {
+      padding-top: 2.5rem;
+    }
+  }
+
+  &--sm {
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__text {
+    @include mq() {
+      text-align: center;
+    }
+  }
+}
+
+// フォーム
+.l-form {
+  font-weight: var(--bold);
+
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    margin-bottom: 1rem;
+  }
+}
+
+// インスタ
+.l-ig {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+
+  @include mq() {
+    padding-bottom: 10rem;
+  }
+}

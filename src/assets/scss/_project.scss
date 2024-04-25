@@ -1,0 +1,661 @@
+@use 'foundation/variable' as *;
+
+// index.html
+// splide
+.splide__pagination {
+  @include mq() {
+    bottom: -.5rem !important;
+    justify-content: right !important;
+    padding-right: calc(20% + 10px) !important;
+  }
+}
+
+#sliderTop {
+  .splide {
+    margin-bottom: 2rem;
+
+    &__slide {
+      position: relative;
+      aspect-ratio: 7 / 10;
+      background-size: calc(100% - 1.5rem) auto !important;
+      background-position: top center !important;
+
+      &:after {
+        position: absolute;
+        content: "";
+        display: block;
+        background-size: contain;
+      }
+    }
+
+    &__pagination {
+
+      // position: static!important;
+      &__page {
+        border-radius: 0 !important;
+        height: 5px !important;
+        width: 50px !important;
+
+        &.is-active {
+          background-color: $main-color !important;
+          transform: scale(1) !important;
+        }
+      }
+    }
+  }
+
+  @include mq() {
+    .splide {
+      &__slide {
+        aspect-ratio: 27 / 17;
+      }
+    }
+  }
+}
+
+.sliderTop {
+  background-size: cover;
+  background-position: center;
+}
+
+#sliderTop-slide01,
+#sliderTop-clone03 {
+  background-image: url('../images/slider/top_sp01.jpg');
+
+  &:after {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 307px;
+    height: 156px;
+    background-image: url('../images/slider/cc01.png');
+  }
+}
+
+#sliderTop-slide02 {
+  background-image: url('../images/slider/top_sp02.jpg');
+
+  &:after {
+    bottom: 6rem;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 307px;
+    height: 100px;
+    background-image: url('../images/slider/cc02.png');
+  }
+}
+
+#sliderTop-slide03,
+#sliderTop-clone02 {
+  background-image: url('../images/slider/top_sp03.jpg');
+
+  &:after {
+    top: 4rem;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 253px;
+    height: 156px;
+    background-image: url('../images/slider/cc03sp.png');
+  }
+}
+
+@include mq() {
+
+  #sliderTop-slide01,
+  #sliderTop-clone03 {
+    background-image: url('../images/slider/top_pc01.jpg');
+
+    &:after {
+      top: auto;
+      bottom: 5vw;
+      left: 3vw;
+      transform: translate(0, 0);
+      width: clamp(250px, 30vw, 500px);
+      height: clamp(100px, 15vw, 254px);
+    }
+  }
+
+  #sliderTop-slide02 {
+    background-image: url('../images/slider/top_pc02.jpg');
+
+    &:after {
+      top: 4vw;
+      bottom: auto;
+      left: auto;
+      right: 3vw;
+      transform: translate(0, 0);
+      width: clamp(250px, 30vw, 500px);
+      height: clamp(100px, 15vw, 164px);
+    }
+  }
+
+  #sliderTop-slide03,
+  #sliderTop-clone02 {
+    background-image: url('../images/slider/top_pc03.jpg');
+
+    &:after {
+      top: auto;
+      bottom: 5vw;
+      left: 5vw;
+      right: auto;
+      transform: translate(0, 0);
+      width: clamp(300px, 40vw, 614px);
+      height: clamp(100px, 15vw, 164px);
+      background-image: url('../images/slider/cc03.png');
+    }
+  }
+}
+
+.card01.splide,
+.card02.splide {
+  img {
+    border-radius: 12px;
+  }
+}
+
+[class^="card"] {
+  margin-bottom: 3rem;
+
+  @include mq() {
+    margin-bottom: 4rem;
+  }
+}
+
+// splide fin
+
+// top
+.p-intro {
+  &__wrap {
+    position: relative;
+    // width: calc(350% / 375 * 100);
+    width: 100%;
+    max-width: 862px;
+    aspect-ratio: 1 / 1;
+    background-image: url('../images/top/top_001.png');
+    background-size: calc(350% / 375 * 100);
+    background-position: center;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    // padding-right: calc((100% - (350% / 375 * 100)) / 2);
+    // padding-left: calc((100% - (350% / 375 * 100)) / 2);
+
+    @include mq() {
+      margin-top: -4rem;
+    }
+  }
+
+
+  &__img01 {
+    position: absolute;
+    width: 100%;
+    top: -2rem;
+    left: 0;
+
+    @include mq() {
+      width: 1803px;
+      height: 889px;
+      top: 10rem;
+      left: 50%;
+      transform: translateX(-50%);
+
+    }
+  }
+
+
+  &__logo {
+    // width: clamp(40px, ,100px);
+    width: clamp(40px, 10vw, 100px);
+    height: auto;
+  }
+
+  &__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    text-align: center;
+  }
+
+  &__text,
+  &__foot {
+    font-size: clamp(0.8rem, 2.5vw, 1.375rem);
+    line-height: calc(22em / 13);
+    margin-bottom: 0;
+  }
+
+  &__foot {
+    position: relative;
+    padding-bottom: 8rem;
+
+    @include mq() {
+      padding-bottom: 15rem;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: -0;
+      width: 167.24px;
+      height: 106px;
+      background-image: url('../images/bg/bg_l.png');
+      background-size: contain;
+
+      @include mq() {
+        // width: 426px;
+        // height: 270px;
+        width: calc(426% / 1920 * 100);
+        height: auto;
+        max-width: 426px;
+        aspect-ratio: 426 / 270;
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 248.4px;
+      height: 138px;
+      background-image: url('../images/bg/bg_r.png');
+      background-size: contain;
+
+      @include mq() {
+        bottom: -10px;
+        width: calc(630% / 1920 * 100);
+        height: auto;
+        max-width: 630px;
+        aspect-ratio: 7 / 4;
+      }
+    }
+  }
+
+  &__foot-img {
+    margin-top: 1rem;
+    width: calc(300% / 375 * 100);
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+
+    @include mq() {
+      display: none;
+    }
+  }
+}
+
+.p-page-headline {
+  padding: 1rem 2rem 3rem;
+
+  &__wrap {
+    margin-top: -61px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 90px 80px;
+    justify-content: center;
+    gap: 1rem;
+    row-gap: 1.5rem;
+    position: relative;
+
+    @include mq() {
+      grid-template-columns: auto 470px auto;
+      grid-template-rows: 160px;
+      margin-top: -110px;
+      align-items: end;
+      margin-bottom: 8rem;
+    }
+  }
+
+  &__title {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: clamp(0.875rem, 2.5vw, 1.375rem);
+    line-height: calc(38em / 22);
+    width: 100%;
+    max-width: 470px;
+    z-index: 101;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background-image: url('../images/parts/ashirai.png');
+      width: 70px;
+      height: 20px;
+      background-size: contain;
+    }
+
+    @include mq() {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+      height: 128px;
+      border-radius: 64px;
+      margin-bottom: 0;
+    }
+  }
+
+  &__img {
+    place-items: center;
+    z-index: 102;
+
+    @include mq() {
+      width: 250px;
+    }
+
+    &.--left {
+      place-items: end;
+      place-self: end;
+      align-self: start;
+    }
+  }
+}
+
+.p-index-main {
+  &__contents {
+    gap: 1rem;
+
+    @include mq() {
+      .l-box {
+        margin-bottom: 0;
+      }
+    }
+
+    &--down {
+      @include mq() {
+        display: grid;
+        grid-template-areas: "head" "foot";
+        gap: 2rem;
+
+        &-slider {
+          grid-area: head;
+        }
+      }
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  &__list {
+    @media screen and (min-width: 1380px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .5rem;
+    }
+  }
+}
+
+
+.p-index-button {
+  &__wrap {
+    padding: 2rem 0 3rem;
+    max-width: 832px;
+    margin-left: auto;
+    margin-right: auto;
+
+    button {
+      margin-bottom: 2rem;
+      width: clamp(250px, 40%, 400px);
+    }
+
+    @include mq() {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding-top: 0;
+      padding-bottom: 9rem;
+    }
+  }
+}
+
+// 会社紹介
+.p-index-about {
+  &__logo {
+    width: 65%;
+    max-width: 408px;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__def {
+    padding-left: .75rem;
+    padding-right: .75rem;
+
+    dl {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid #fff;
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      @include mq() {
+        font-size: 1rem;
+        padding-left: 5rem;
+        padding-right: 5rem;
+      }
+    }
+  }
+
+  &__icon {
+    text-decoration: none;
+    background: $main-color;
+    color: white;
+    border-radius: 3px;
+    padding: 0 .25rem;
+  }
+}
+
+.p-about-schedule {
+  &__wrap {
+    display: grid;
+    margin-bottom: 1rem;
+  }
+
+  &__item-heading {
+    font-size: 1.125rem;
+    margin-bottom: .5em;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: .5rem;
+    font-size: 22px;
+    color: $main-color;
+    font-weight: bold;
+
+    span {
+      color: white;
+      // position: relative;
+      background: $main-color;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__title {
+    border-bottom: 4px dotted #E7F1F6;
+  }
+
+  &__item {
+    margin-left: 21px;
+    padding-left: 21px;
+
+    &:not(.--last) {
+      border-left: 3px solid $main-color;
+      padding-bottom: 1rem;
+    }
+  }
+
+  &__item-fig {
+    margin-left: 21px;
+    padding-left: 21px;
+    line-height: 1.75;
+    position: relative;
+
+    img {
+      border-radius: 20px;
+    }
+
+    &:not(.--last) {
+      border-left: 3px solid $main-color;
+
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 6px;
+        left: -13.5px;
+        width: 24px;
+        height: 24px;
+        transform: rotate(45deg) skew(10deg, 10deg);
+        border-bottom: 3px solid $main-color;
+        border-right: 3px solid $main-color;
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: 850px) {
+  .p-about {
+    &__box {
+      padding: 100px;
+    }
+  }
+
+  .p-about-schedule {
+    &__wrap {
+      display: grid;
+      grid-template-columns: calc(60% - 1rem) calc(40% - 1rem);
+      grid-template-rows: 80px auto;
+      column-gap: 2rem;
+      font-size: 1rem;
+    }
+
+    &__item-heading {
+      // font-size: 1.375rem;
+      font-size: 44px;
+      margin-bottom: 2rem;
+
+      span {
+        width: 60px;
+        height: 60px;
+      }
+    }
+
+    &__item {
+      margin-left: 30px;
+      padding-left: 30px;
+      position: relative;
+
+      &:not(.--last) {
+        // padding-bottom: clamp(3rem, 16%, 115px);
+
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          bottom: 6px;
+          left: -13.5px;
+          width: 24px;
+          height: 24px;
+          transform: rotate(45deg) skew(10deg, 10deg);
+          border-bottom: 3px solid $main-color;
+          border-right: 3px solid $main-color;
+        }
+      }
+    }
+
+    &__item-fig {
+      grid-column: 2 / 3;
+      grid-row: 1 / 3;
+      margin: 0;
+      padding: 0;
+
+      &:not(.--last) {
+        border: none;
+
+        &::before {
+          display: none;
+        }
+      }
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+}
+
+// about table
+.p-about-table {
+  gap: 1rem;
+  width: 100%;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  font-weight: bold;
+
+  @include mq() {
+    font-size: 1.675rem;
+  }
+
+  * {
+    padding: 1rem .25rem;
+  }
+
+
+  &__title {
+    font-weight: bold;
+    text-align: center;
+    background: $main-color;
+    color: white;
+  }
+
+  &__item {
+    background-color: $light-blue;
+  }
+}
+
+// お問い合わせ
+.p-form {
+  &__wrap {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__privacy {
+    align-items: center;
+    margin: 2rem 0;
+
+    @include mq() {
+      margin: 4rem 0;
+    }
+  }
+
+  &__button {
+    width: 50vw;
+    max-width: 400px;
+  }
+}

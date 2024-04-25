@@ -1,0 +1,71 @@
+@use 'foundation/variable' as *;
+
+body {
+  font-family: "fot-tsukuardgothic-std", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0.1em;
+}
+
+p {
+  margin-bottom: 2rem;
+}
+
+input,
+textarea {
+  border: 1px solid $text-color;
+  border-radius: 7px;
+  padding: .5rem
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align-last: left;
+}
+
+.right {
+  text-align-last: right;
+}
+
+.br-sp {
+  @include mq() {
+    display: none;
+  }
+}
+
+.br-pc {
+  display: none;
+
+  @include mq() {
+    display: block;
+  }
+}
+
+.is-block {
+  display: block;
+}
+
+.is-nowrap {
+  white-space: nowrap;
+}
+
+.note {
+  font-size: .625rem;
+  letter-spacing: normal;
+  margin-bottom: 0.5rem;
+
+  @include mq() {
+    font-size: 1rem;
+  }
+}
+
+.no-under {
+  text-decoration: none;
+}
