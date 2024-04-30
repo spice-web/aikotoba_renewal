@@ -1,13 +1,13 @@
 <script setup></script>
 <template>
-  <div class="c-bg__blue">
+  <div class="c-bg__blue c-box--title">
     <div class="l-inner--lg l-inner--title">
-      <div class="l-box--title">
+      <div class="l-box--title p-about__box">
         <h3 class="c-title__lv3">お問い合わせ</h3>
         <p class="bold center">
           ご不明点などございましたら、<br class="br-sp" />お気軽にお問い合わせください。
         </p>
-        <form action="" method="POST" class="l-form p-form__wrap">
+        <form class="l-form p-form__wrap" action="" method="POST">
           <div class="l-form__wrap">
             <label for="name">お名前 ※必須</label>
             <input id="name" type="text" name="name" required />

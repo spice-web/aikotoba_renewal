@@ -13,7 +13,9 @@
   },
   "dependencies": {
     "@splidejs/vue-splide": "^0.6.12",
+    "axios": "^1.6.8",
     "vue": "^3.4.21",
+    "vue-axios": "^3.5.2",
     "vue-router": "^4.3.2"
   },
   "devDependencies": {

@@ -98,13 +98,8 @@
       background-image: url('../assets/images/slider/cc03sp.png');
     }
   }
-}
 
-
-
-@include mq() {
-
-  #top-slider {
+  @include mq() {
 
     [id*="-slide01"],
     [id*="-clone03"] {

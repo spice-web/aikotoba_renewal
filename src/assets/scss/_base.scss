@@ -18,6 +18,10 @@ textarea {
   padding: .5rem
 }
 
+:focus-visible {
+  outline: rgba(0, 139, 205, 0.5) auto 1px;
+}
+
 .bold {
   font-weight: 700;
 }

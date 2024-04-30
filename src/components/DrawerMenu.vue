@@ -13,13 +13,17 @@
   <ul class="c-drawer__menu" :class="{ active: isActive }">
     <!-- ここにメニューコンテンツを挿入 -->
     <ul class="c-drawer__nav">
-      <li><router-link to="/">トップ</router-link></li>
-      <li><router-link to="/about#possible">あいことば療育ラボにできること</router-link></li>
-      <li><router-link to="/about">1日のながれ</router-link></li>
-      <li><router-link to="/about#price">ご利用料金</router-link></li>
-      <li><router-link to="/index#company">事業所詳細</router-link></li>
-      <li><router-link to="/index#map">アクセス</router-link></li>
-      <li><router-link to="/contact">お問い合わせ</router-link></li>
+      <li><router-link to="/" @click="close">トップ</router-link></li>
+      <li>
+        <router-link to="/about#possible" @click="close"
+          >あいことば療育ラボにできること</router-link
+        >
+      </li>
+      <li><router-link to="/about" @click="close">1日のながれ</router-link></li>
+      <li><router-link to="/about#price" @click="close">ご利用料金</router-link></li>
+      <li><router-link to="/#company" @click="close">事業所詳細</router-link></li>
+      <li><router-link to="/#map" @click="close">アクセス</router-link></li>
+      <li><router-link to="/contact" @click="close">お問い合わせ</router-link></li>
     </ul>
   </ul>
 </template>
@@ -39,6 +43,10 @@ export default {
       } else {
         document.body.style.overflowY = 'auto'
       }
+    },
+    close() {
+      this.isActive = false
+      document.body.style.overflowY = 'auto'
     }
   }
 }
