@@ -1,10 +1,11 @@
 import './assets/main.scss'
+import './assets/js/typekit.js' // typekit.jsをインポート
 
 import { createApp } from 'vue'
-// import App from './App.vue'
-import Header from './HeaderComponent.vue'
-import Footer from './FooterComponent.vue'
+import App from './App.vue'
+import router from './router'
 
-// createApp(App).mount('#app')
-createApp(Header).mount('#header')
-createApp(Footer).mount('#footer')
+const app = createApp(App)
+app.use(router)
+
+app.mount('#app')

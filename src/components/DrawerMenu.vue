@@ -1,25 +1,45 @@
 <template>
   <!-- ハンバーガーアイコン -->
-  <div class="c-drawer__btn">
+  <div class="c-drawer__btn" :class="{ active: isActive }" @click="toggle">
     <span></span>
     <span></span>
     <span></span>
   </div>
 
   <!-- オーバーレイ背景 -->
-  <div class="c-drawer__bg"></div>
+  <div class="c-drawer__bg" :class="{ active: isActive }"></div>
 
   <!-- ドロワーメニュー -->
-  <ul class="c-drawer__menu">
+  <ul class="c-drawer__menu" :class="{ active: isActive }">
     <!-- ここにメニューコンテンツを挿入 -->
     <ul class="c-drawer__nav">
-      <li><a href="/">トップ</a></li>
-      <li><a href="index.html#possible">あいことば療育ラボにできること</a></li>
-      <li><a href="about.html">1日のながれ</a></li>
-      <li><a href="about.html#price">ご利用料金</a></li>
-      <li><a href="index.html#company">事業所詳細</a></li>
-      <li><a href="index.html#map">アクセス</a></li>
-      <li><a href="contact.html">お問い合わせ</a></li>
+      <li><router-link to="/">トップ</router-link></li>
+      <li><router-link to="/about#possible">あいことば療育ラボにできること</router-link></li>
+      <li><router-link to="/about">1日のながれ</router-link></li>
+      <li><router-link to="/about#price">ご利用料金</router-link></li>
+      <li><router-link to="/index#company">事業所詳細</router-link></li>
+      <li><router-link to="/index#map">アクセス</router-link></li>
+      <li><router-link to="/contact">お問い合わせ</router-link></li>
     </ul>
   </ul>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      isActive: false
+    }
+  },
+  methods: {
+    toggle() {
+      this.isActive = !this.isActive
+      if (this.isActive) {
+        document.body.style.overflowY = 'hidden'
+      } else {
+        document.body.style.overflowY = 'auto'
+      }
+    }
+  }
+}
+</script>

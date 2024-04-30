@@ -2,15 +2,32 @@
 
 // index.html
 // splide
-.splide__pagination {
-  @include mq() {
-    bottom: -.5rem !important;
-    justify-content: right !important;
-    padding-right: calc(20% + 10px) !important;
+.splide {
+  background-size: cover;
+  background-position: center;
+
+  &__pagination {
+    @include mq() {
+      bottom: -.5rem !important;
+      justify-content: right !important;
+      padding-right: calc(20% + 10px) !important;
+    }
+
+    &__page {
+      border-radius: 0 !important;
+      height: 5px !important;
+      width: 50px !important;
+
+      &.is-active {
+        background-color: $main-color !important;
+        transform: scale(1) !important;
+      }
+    }
   }
 }
 
-#sliderTop {
+
+#top-slider {
   .splide {
     margin-bottom: 2rem;
 
@@ -27,121 +44,110 @@
         background-size: contain;
       }
     }
-
-    &__pagination {
-
-      // position: static!important;
-      &__page {
-        border-radius: 0 !important;
-        height: 5px !important;
-        width: 50px !important;
-
-        &.is-active {
-          background-color: $main-color !important;
-          transform: scale(1) !important;
-        }
-      }
-    }
   }
 
   @include mq() {
     .splide {
+      margin-bottom: 0;
+
       &__slide {
         aspect-ratio: 27 / 17;
       }
     }
   }
-}
 
-.sliderTop {
-  background-size: cover;
-  background-position: center;
-}
+  // 画像
+  [id*="-slide01"],
+  [id*="-clone03"] {
+    background-image: url('../assets/images/slider/top_sp01.jpg');
 
-#sliderTop-slide01,
-#sliderTop-clone03 {
-  background-image: url('../images/slider/top_sp01.jpg');
+    &:after {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 307px;
+      height: 156px;
+      background-image: url('../assets/images/slider/cc01.png');
+    }
+  }
 
-  &:after {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 307px;
-    height: 156px;
-    background-image: url('../images/slider/cc01.png');
+  [id*="-slide02"],
+  [id*="-clone02"] {
+    background-image: url('../assets/images/slider/top_sp02.jpg');
+
+    &:after {
+      bottom: 6rem;
+      left: 50%;
+      transform: translate(-50%, 0);
+      width: 307px;
+      height: 100px;
+      background-image: url('../assets/images/slider/cc02.png');
+    }
+  }
+
+  [id*="-slide03"],
+  [id*="-clone01"] {
+    background-image: url('../assets/images/slider/top_sp03.jpg');
+
+    &:after {
+      top: 4rem;
+      left: 50%;
+      transform: translate(-50%, 0);
+      width: 253px;
+      height: 156px;
+      background-image: url('../assets/images/slider/cc03sp.png');
+    }
   }
 }
 
-#sliderTop-slide02 {
-  background-image: url('../images/slider/top_sp02.jpg');
 
-  &:after {
-    bottom: 6rem;
-    left: 50%;
-    transform: translate(-50%, 0);
-    width: 307px;
-    height: 100px;
-    background-image: url('../images/slider/cc02.png');
-  }
-}
-
-#sliderTop-slide03,
-#sliderTop-clone02 {
-  background-image: url('../images/slider/top_sp03.jpg');
-
-  &:after {
-    top: 4rem;
-    left: 50%;
-    transform: translate(-50%, 0);
-    width: 253px;
-    height: 156px;
-    background-image: url('../images/slider/cc03sp.png');
-  }
-}
 
 @include mq() {
 
-  #sliderTop-slide01,
-  #sliderTop-clone03 {
-    background-image: url('../images/slider/top_pc01.jpg');
+  #top-slider {
 
-    &:after {
-      top: auto;
-      bottom: 5vw;
-      left: 3vw;
-      transform: translate(0, 0);
-      width: clamp(250px, 30vw, 500px);
-      height: clamp(100px, 15vw, 254px);
+    [id*="-slide01"],
+    [id*="-clone03"] {
+      background-image: url('../assets/images/slider/top_pc01.jpg');
+
+      &:after {
+        top: auto;
+        bottom: 5vw;
+        left: 3vw;
+        transform: translate(0, 0);
+        width: clamp(250px, 30vw, 500px);
+        height: clamp(100px, 15vw, 254px);
+      }
     }
-  }
 
-  #sliderTop-slide02 {
-    background-image: url('../images/slider/top_pc02.jpg');
+    [id*="-slide02"] {
+      background-image: url('../assets/images/slider/top_pc02.jpg');
 
-    &:after {
-      top: 4vw;
-      bottom: auto;
-      left: auto;
-      right: 3vw;
-      transform: translate(0, 0);
-      width: clamp(250px, 30vw, 500px);
-      height: clamp(100px, 15vw, 164px);
+      &:after {
+        top: 4vw;
+        bottom: auto;
+        left: auto;
+        right: 3vw;
+        transform: translate(0, 0);
+        width: clamp(250px, 30vw, 500px);
+        height: clamp(100px, 15vw, 164px);
+      }
     }
-  }
 
-  #sliderTop-slide03,
-  #sliderTop-clone02 {
-    background-image: url('../images/slider/top_pc03.jpg');
+    [id*="-slide03"],
+    [id*="-clone02"] {
+      background-image: url('../assets/images/slider/top_pc03.jpg');
 
-    &:after {
-      top: auto;
-      bottom: 5vw;
-      left: 5vw;
-      right: auto;
-      transform: translate(0, 0);
-      width: clamp(300px, 40vw, 614px);
-      height: clamp(100px, 15vw, 164px);
-      background-image: url('../images/slider/cc03.png');
+      &:after {
+        top: auto;
+        bottom: 5vw;
+        left: 5vw;
+        right: auto;
+        transform: translate(0, 0);
+        width: clamp(300px, 40vw, 614px);
+        height: clamp(100px, 15vw, 164px);
+        background-image: url('../assets/images/slider/cc03.png');
+      }
     }
   }
 }
@@ -153,7 +159,8 @@
   }
 }
 
-[class^="card"] {
+.card01,
+.card02 {
   margin-bottom: 3rem;
 
   @include mq() {
@@ -171,7 +178,7 @@
     width: 100%;
     max-width: 862px;
     aspect-ratio: 1 / 1;
-    background-image: url('../images/top/top_001.png');
+    background-image: url('../assets/images/top/top_001.png');
     background-size: calc(350% / 375 * 100);
     background-position: center;
     margin-top: 4rem;
@@ -241,7 +248,7 @@
       left: -0;
       width: 167.24px;
       height: 106px;
-      background-image: url('../images/bg/bg_l.png');
+      background-image: url('../assets/images/bg/bg_l.png');
       background-size: contain;
 
       @include mq() {
@@ -261,7 +268,7 @@
       right: 0;
       width: 248.4px;
       height: 138px;
-      background-image: url('../images/bg/bg_r.png');
+      background-image: url('../assets/images/bg/bg_r.png');
       background-size: contain;
 
       @include mq() {
@@ -331,7 +338,7 @@
       top: -2rem;
       left: 50%;
       transform: translateX(-50%);
-      background-image: url('../images/parts/ashirai.png');
+      background-image: url('../assets/images/parts/ashirai.png');
       width: 70px;
       height: 20px;
       background-size: contain;
@@ -376,7 +383,7 @@
       @include mq() {
         display: grid;
         grid-template-areas: "head" "foot";
-        gap: 2rem;
+        // gap: 2rem;
 
         &-slider {
           grid-area: head;

@@ -358,7 +358,7 @@
 
   &--blue {
     // padding: 1rem 2rem 3rem;
-    // background-image: url("../images/bg/bg_light_blue.jpg");
+    // background-image: url("../assets/images/bg/bg_light_blue.jpg");
     // background-repeat: repeat;
     // background-size: 500px 500px;
     // color: white;
@@ -395,7 +395,7 @@
 
   &--blue {
     @extend .l-box;
-    background-image: url("../images/bg/bg_light_blue.jpg");
+    background-image: url("../assets/images/bg/bg_light_blue.jpg");
     background-repeat: repeat;
 
     @include mq() {
