@@ -1,6 +1,7 @@
 <script>
 import { defineComponent } from 'vue'
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/vue-splide'
+
 // Splide.jsのCSSをインポート
 import '@splidejs/vue-splide/css'
 
@@ -18,6 +19,8 @@ export default defineComponent({
     :has-track="false"
     :options="{
       type: 'loop',
+      autoplay: true,
+      interval: 3000,
       arrows: false,
       rewind: true,
       padding: '20%',

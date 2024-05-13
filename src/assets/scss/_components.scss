@@ -51,8 +51,33 @@ $transition-duration: .3s;
     box-shadow: 0 4px 0 0 $dark-blue;
   }
 
-  &--tel {
+  &--disabled {
     @extend .c-button;
+    background: #ccc;
+    color: #666;
+    box-shadow: none;
+    cursor: not-allowed;
+    width: 100%;
+
+    &:active {
+      box-shadow: none;
+      transform: translateY(0);
+    }
+  }
+
+  &--mail {
+    @extend .c-button;
+    width: 100%;
+
+    span {
+      &:before {
+        background-image: url("../assets/images/icon/icon_mail.png");
+      }
+    }
+  }
+
+  &--tel {
+    @extend .c-button--mail;
 
     span {
       &:before {
@@ -61,15 +86,6 @@ $transition-duration: .3s;
     }
   }
 
-  &--mail {
-    @extend .c-button;
-
-    span {
-      &:before {
-        background-image: url("../assets/images/icon/icon_mail.png");
-      }
-    }
-  }
 
   // 2段組レイアウト時
   &--top {
@@ -326,10 +342,9 @@ $transition-duration: .3s;
 
       @include mq() {
         top: -1rem;
-        right: -300px;
+        right: max(-300px, -30vw);
         width: 252px;
         height: 190px;
-
       }
     }
   }

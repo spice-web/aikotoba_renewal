@@ -10,14 +10,11 @@
   <div class="c-drawer__bg" :class="{ active: isActive }"></div>
 
   <!-- ドロワーメニュー -->
-  <ul class="c-drawer__menu" :class="{ active: isActive }">
-    <!-- ここにメニューコンテンツを挿入 -->
+  <div class="c-drawer__menu" :class="{ active: isActive }">
     <ul class="c-drawer__nav">
       <li><router-link to="/" @click="close">トップ</router-link></li>
       <li>
-        <router-link to="/about#possible" @click="close"
-          >あいことば療育ラボにできること</router-link
-        >
+        <router-link to="/#possible" @click="close">あいことば療育ラボにできること</router-link>
       </li>
       <li><router-link to="/about" @click="close">1日のながれ</router-link></li>
       <li><router-link to="/about#price" @click="close">ご利用料金</router-link></li>
@@ -25,7 +22,7 @@
       <li><router-link to="/#map" @click="close">アクセス</router-link></li>
       <li><router-link to="/contact" @click="close">お問い合わせ</router-link></li>
     </ul>
-  </ul>
+  </div>
 </template>
 
 <script>

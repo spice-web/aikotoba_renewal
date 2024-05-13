@@ -6,21 +6,21 @@ import GoogleMap from '@/components/GoogleMap.vue'
 // データの定義
 const data1 = {
   images: [
-    './src/assets/images/top/image003.jpg',
-    './src/assets/images/top/image004.jpg',
-    './src/assets/images/top/image005.jpg',
-    './src/assets/images/top/image001.jpg',
-    './src/assets/images/top/image002.jpg'
+    '/images/slider/image003.jpg',
+    '/images/slider/image004.jpg',
+    '/images/slider/image005.jpg',
+    '/images/slider/image001.jpg',
+    '/images/slider/image002.jpg'
   ]
 }
 
 const data2 = {
   images: [
-    './src/assets/images/top/image006.jpg',
-    './src/assets/images/top/image007.jpg',
-    './src/assets/images/top/image008.jpg',
-    './src/assets/images/top/image009.jpg',
-    './src/assets/images/top/image010.jpg'
+    '/images/slider/image006.jpg',
+    '/images/slider/image007.jpg',
+    '/images/slider/image008.jpg',
+    '/images/slider/image009.jpg',
+    '/images/slider/image010.jpg'
   ]
 }
 </script>
@@ -40,7 +40,7 @@ const data2 = {
         <img src="@/assets/images/top/top_001_bg_pc.svg" width="1803" height="889" alt="" />
       </figure>
       <div class="p-intro__content">
-        <img src="./src/images/logo/logomark.png" alt="" class="p-intro__logo" />
+        <img src="@/assets/images/logo/logomark.png" alt="" class="p-intro__logo" />
         <p class="p-intro__text">
           あいことば療育ラボ横川は<br />ケア児・発達障害児童にも<br />
           対応したインクルーシブ<br />療育を提供する放課後等<br />デイサービスです
@@ -94,7 +94,7 @@ const data2 = {
     <!-- 上段スライダー -->
     <IndexSlider :images="data1.images" />
 
-    <h2 class="c-title__lv2 br-sp">
+    <h2 class="c-title__lv2 br-sp index-title__bg-star">
       専門スタッフによる<br />充実した療育と医療的ケアで、<br />お子さまの成長を支えます。
     </h2>
 
@@ -197,7 +197,7 @@ const data2 = {
       </dl>
       <dl class="c-list__blue">
         <dt>事業所番号</dt>
-        <dd>3450219724</dd>
+        <dd><a class="nolink">3450219724</a></dd>
       </dl>
       <dl class="c-list__blue">
         <dt>住所</dt>
@@ -208,11 +208,11 @@ const data2 = {
       </dl>
       <dl class="c-list__blue">
         <dt>電話</dt>
-        <dd>082-236-6375</dd>
+        <dd><a class="nolink">082-236-6375</a></dd>
       </dl>
       <dl class="c-list__blue">
         <dt>FAX</dt>
-        <dd>082-553-0966</dd>
+        <dd><a class="nolink">082-553-0966</a></dd>
       </dl>
       <dl class="c-list__blue">
         <dt>自治体名</dt>
@@ -228,3 +228,33 @@ const data2 = {
     <GoogleMap />
   </div>
 </template>
+
+<style scoped lang="scss">
+.index-title__bg-star {
+  position: relative;
+  z-index: 0;
+  &:before {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 375px;
+    height: 160px;
+    background-image: url('../assets/images/parts/star_04.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 375px 160px;
+    z-index: -1;
+  }
+}
+
+.p-index-button__wrap {
+  padding-bottom: 7rem;
+  background-image: url('../assets/images/parts/star_04.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 375px 160px;
+}
+</style>

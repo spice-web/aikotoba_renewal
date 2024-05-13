@@ -63,10 +63,11 @@ import ReturnTopButton from './components/ReturnTopButton.vue'
             </li>
           </ul>
         </div>
-        <div class="l-footer__info">
-          事業所番号：3450219724 〒733-0013<br />
+        <div class="l-footer__info nolink">
+          <a class="nolink">事業所番号：3450219724</a><br />
+          〒733-0013<br />
           広島県広島市西区横川新町12-13<br />
-          TEL.082-236-6375 ／ FAX.082-553-0966<br />
+          TEL.<a class="nolink">082-236-6375</a> ／ FAX.<a class="nolink">082-553-0966</a><br />
           月～金 15:00～18:00 ／ 祝日13:00～18:00
         </div>
       </div>
@@ -103,3 +104,42 @@ import ReturnTopButton from './components/ReturnTopButton.vue'
     <ReturnTopButton />
   </footer>
 </template>
+
+<script>
+// ページタイトルとdescriptionを設定する
+export default {
+  watch: {
+    $route(routeInstance) {
+      this.createTitleDesc(routeInstance)
+    }
+  },
+  mounted: function () {
+    this.createTitleDesc(this.$route)
+  },
+  methods: {
+    // titleをセットするメソッド
+    createTitleDesc: function (routeInstance) {
+      // titleを設定する処理
+      if (routeInstance.meta.title) {
+        document.title = routeInstance.meta.title + ' | あいことば療育ラボ横川'
+      } else {
+        document.title = 'あいことば療育ラボ横川'
+      }
+
+      // descriptionを設定する処理
+      if (routeInstance.meta.desc) {
+        document
+          .querySelector('meta[name="description"]')
+          .setAttribute('content', routeInstance.meta.desc)
+      } else {
+        document
+          .querySelector('meta[name="description"]')
+          .setAttribute(
+            'content',
+            'あいことば療育ラボ横川は、広島市西区横川新町にある放課後等デイサービスです。'
+          )
+      }
+    }
+  }
+}
+</script>

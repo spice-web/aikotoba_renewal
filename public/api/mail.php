@@ -1,24 +1,29 @@
-<!-- 戻るボタン未実装 -->
-
 <?php
-include 'functions.php';
+header("Access-Control-Allow-Origin: https://aikotoba.ltd/");
+header("Access-Control-Allow-Headers: Content-Type");
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  // トークンの検証
-  session_start();
-  if (!isset($_POST['token']) || $_POST['token'] !== $_SESSION['token']) {
-    die('不正なリクエストです。');
-  }
-  unset($_SESSION['token']);  // トークンの破棄
+
+// HTTPリクエストのContent-Typeを確認
+$contentType = isset($_SERVER['CONTENT_TYPE']) ? $_SERVER['CONTENT_TYPE'] : '';
+
+// Content-Typeがapplication/jsonかどうかを確認
+if (strpos($contentType, 'application/json') !== false) {
+  // 受信したJSONデータを取得
+  $json_data = file_get_contents('php://input');
+
+  // JSONデータを連想配列にデコード
+  $data = json_decode($json_data, true);
+
 
   // フォームからデータをサニタイズして取得
-  $name = sanitize_input($_POST['name']);
-  $kana = sanitize_input($_POST['kana']);
-  $tel = sanitize_input($_POST['tel']);
-  $email = sanitize_email($_POST['email']);
-  $content = sanitize_input($_POST['content']);
+  $name = isset($data['name']) ? sanitize_input($data['name']) : '';
+  $kana = isset($data['kana']) ? sanitize_input($data['kana']) : '';
+  $tel  = isset($data['tel']) ? sanitize_input($data['tel']) : '';
+  $email = isset($data['email']) ? sanitize_input($data['email']) : '';
+  $content = isset($data['content']) ? sanitize_input($data['content']) : '';
 
-  //　バリデーション
+
+  // バリデーション
   $error = array();
 
   // お名前
@@ -38,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   } elseif (20 < mb_strlen($data['kana'])) {
     $error[] = "「よみがな」は20文字以内で入力してください。";
   } elseif (!preg_match("/^[ぁ-んァ-ヶー]+$/u", $data['kana'])) {
-    $error[] = "「よみがな」は全角ひらがなで入力してください。";
+    $error[] = "「よみがな」は全角カタカナで入力してください。";
   }
 
   // 電話番号
@@ -80,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
   }
 
-  //　メールの送信先
+  // メールの送信先
   $to = "mito@spice-web.jp";
 
   // ここにメール機能を追加する
@@ -101,15 +106,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // 件名を設定
   $auto_reply_subject = 'お問い合わせありがとうございます。';
   // 本文を設定
-  $auto_reply_text  = "この度は、お問い合わせいただき誠にありがとうございます。下記内容でお問い合わせを受け付けました。\n\n";
+  $auto_reply_text  = "この度は、お問い合わせいただき誠にありがとうございます。\n下記内容でお問い合わせを受け付けました。\n\n";
   $auto_reply_text .= "お問い合わせ日時:" . date("Y-m-d H:i") . "\n";
   $auto_reply_text .= "お名前: $name($kana)\n";
   $auto_reply_text .= "電話番号: $tel\n";
   $auto_reply_text .= "メールアドレス： $email\n\n";
-  $auto_reply_text .= "お問い合わせ内容: " . nl2br($content) . "\n\n";
+  $auto_reply_text .= "お問い合わせ内容: " . nl2br($content) . "\n\n\n\n";
+  $auto_reply_text .= "=============================================\n";
+  $auto_reply_text .= "あいことば療育ラボ横川\n";
+  $auto_reply_text .= "事業所番号：3450219724\n";
+  $auto_reply_text .= "住所：〒733-0013 広島県広島市西区横川新町12-13\n";
+  $auto_reply_text .= "URL：https://aikotoba.ltd/\n";
+  $auto_reply_text .= "TEL：082-236-6375\n";
+  $auto_reply_text .= "E-mail：info@aikotoba.ltd\n";
 
   // メール送信
-  mb_send_mail($email, $auto_reply_subject, $auto_reply_text, $header);
+  $auto_reply_sent = mb_send_mail($email, $auto_reply_subject, $auto_reply_text, $header);
 
   // 運営側へ送るメールの件名
   $admin_reply_subject = "お問い合わせを受け付けました";
@@ -119,18 +131,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $admin_reply_text .= "お名前：" . $name  . "(" . $kana . ")\n";
   $admin_reply_text .= "電話番号" . $tel . "\n";
   $admin_reply_text .= "メールアドレス：" . $email . "\n\n";
-  $admin_reply_text .= "お問い合わせ内容：" . nl2br($clean['content']) . "\n\n";
+  $admin_reply_text .= "お問い合わせ内容：" . nl2br($content) . "\n\n";
 
   // メール送信
-  mb_send_mail($to, $admin_reply_subject, $admin_reply_text, $header);
+  $admin_reply_sent = mb_send_mail($to, $admin_reply_subject, $admin_reply_text, $header);
 
-  // 送信結果の表示
-  if ($mail_sent) {
-    header("Location: complete.php"); // 送信完了ページへリダイレクト
-    exit;
+  //送信結果の表示
+  // 送信結果を通知
+  if ($auto_reply_sent && $admin_reply_sent) {
+    echo "送信しました";
   } else {
-    echo "メールの送信に失敗しました。もう一度お試しください。";
+    echo "送信失敗";
   }
+
+  exit();
 } else {
   echo "このページには直接アクセスできません。";
 }

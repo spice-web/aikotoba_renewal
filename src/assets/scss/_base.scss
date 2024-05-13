@@ -70,6 +70,14 @@ textarea {
   }
 }
 
+.error {
+  color: red;
+}
+
+.nolink {
+  pointer-events: none;
+}
+
 .no-under {
   text-decoration: none;
 }
