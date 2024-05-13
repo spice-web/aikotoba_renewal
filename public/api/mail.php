@@ -86,7 +86,7 @@ if (strpos($contentType, 'application/json') !== false) {
   }
 
   // メールの送信先
-  $to = "mito@spice-web.jp";
+  $to = "aikotoba.1101@gmail.com";
 
   // ここにメール機能を追加する
   // 変数とタイムゾーンを初期化
@@ -100,11 +100,11 @@ if (strpos($contentType, 'application/json') !== false) {
 
   // へーダー情報を設定
   $header = "MIME-Version: 1.0\n";
-  $header .= "From: あいことば療育ラボ横川 <noreply@aaa.com>\n";
-  $header .= "Reply-To: あいことば療育ラボ横川 <noreply@aaa.com>\n";
+  $header .= "From: あいことば療育ラボ横川 <noreply@aikotoba.ltd>\n";
+  $header .= "Reply-To: あいことば療育ラボ横川 <noreply@aikotoba.ltd>\n";
 
   // 件名を設定
-  $auto_reply_subject = 'お問い合わせありがとうございます。';
+  $auto_reply_subject = 'お問い合わせありがとうございます。【あいことば療育ラボ横川】';
   // 本文を設定
   $auto_reply_text  = "この度は、お問い合わせいただき誠にありがとうございます。\n下記内容でお問い合わせを受け付けました。\n\n";
   $auto_reply_text .= "お問い合わせ日時:" . date("Y-m-d H:i") . "\n";
@@ -118,13 +118,13 @@ if (strpos($contentType, 'application/json') !== false) {
   $auto_reply_text .= "住所：〒733-0013 広島県広島市西区横川新町12-13\n";
   $auto_reply_text .= "URL：https://aikotoba.ltd/\n";
   $auto_reply_text .= "TEL：082-236-6375\n";
-  $auto_reply_text .= "E-mail：info@aikotoba.ltd\n";
+  $auto_reply_text .= "E-mail：aikotoba.1101@gmail.com\n";
 
   // メール送信
   $auto_reply_sent = mb_send_mail($email, $auto_reply_subject, $auto_reply_text, $header);
 
   // 運営側へ送るメールの件名
-  $admin_reply_subject = "お問い合わせを受け付けました";
+  $admin_reply_subject = "HPのフォームよりお問い合わせを受け付けました";
   // 本文を設定
   $admin_reply_text = "下記内容でお問い合わせがありました。\n\n";
   $admin_reply_text .= "お問い合わせ日時：" . date("Y-m-d H:i") . "\n";

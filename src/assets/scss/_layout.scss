@@ -149,6 +149,7 @@
     @include mq() {
       grid-template-columns: 1fr auto;
       gap: 2rem;
+      padding-bottom: 5rem;
     }
   }
 
@@ -236,15 +237,50 @@
   }
 
   &__company-logo {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: start;
-    gap: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    // grid-template-columns: auto 1fr;
+    // align-items: start;
+    gap: .25rem;
+
+    &:first-of-type {
+      margin-bottom: 1rem;
+    }
+
 
     img {
+      height: auto;
+      width: 100%;
       max-width: 195px;
     }
+
+    &:nth-of-type(2) {
+      img {
+        max-width: 150px;
+      }
+    }
+
+    dd {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    @include mq() {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: start;
+
+      dd {
+        justify-content: left;
+        gap: 1rem;
+        margin-left: 1rem;
+      }
+    }
   }
+
 
   &__copy {
     font-size: 0.625rem;
