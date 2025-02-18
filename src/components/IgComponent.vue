@@ -4,50 +4,32 @@
     <div class="l-inner--lg">
       <div class="c-title__ig">Instagram</div>
       <!-- インスタグラム投稿一覧 -->
-      <ul class="box">
-        <li v-for="post in posts" :key="post.id">
-          <a :href="post.permalink" target="_blank">
-            <!-- 動画の場合 -->
-            <img
-              v-if="post.media_type === 'VIDEO'"
-              controls
-              :src="post.thumbnail_url"
-              :alt="post.caption"
-              style="max-width: 100%"
-            />
-            <!-- 画像の場合 -->
-            <img v-else :src="post.media_url" :alt="post.caption" style="max-width: 100%" />
-            <!-- Instagramへのリンク -->
-          </a>
-        </li>
-      </ul>
+      <div class="embedsocial-hashtag" data-ref="ed8aeccabb32e5d0de279ee50ade36ebd628c9b3">
+        <a
+          class="feed-powered-by-es feed-powered-by-es-feed-img es-widget-branding"
+          href="https://embedsocial.jp/"
+          target="_blank"
+          title="EmbedSocialで作成しました"
+        >
+          <img src="https://embedsocial.com/cdn/icon/embedsocial-logo.webp" alt="EmbedSocial" />
+          <div class="es-widget-branding-text">EmbedSocialで作成しました</div>
+        </a>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
-
-export default {
-  data() {
-    return {
-      posts: []
-    }
-  },
-  mounted() {
-    this.fetchPosts()
-  },
-  methods: {
-    async fetchPosts() {
-      try {
-        const response = await axios.get('/api/instagram_api.json')
-        this.posts = response.data.data
-      } catch (error) {
-        console.error('Error fetching posts: ', error)
-      }
-    }
+;(function (d, s, id) {
+  var js
+  if (d.getElementById(id)) {
+    return
   }
-}
+  js = d.createElement(s)
+  js.id = id
+  js.src = 'https://embedsocial.com/cdn/ht.js'
+  d.getElementsByTagName('head')[0].appendChild(js)
+})(document, 'script', 'EmbedSocialHashtagScript')
 </script>
 
 <style scoped lang="scss">
@@ -60,16 +42,19 @@ export default {
     margin-bottom: 3.5rem;
   }
 }
+
+// 現在はウィジェット使用のため非表示
 .box {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-  gap: 0.75rem;
+  gap: 0.5rem;
   img {
     width: 100%;
     aspect-ratio: 1;
     object-fit: cover;
   }
   @media (min-width: 850px) {
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     gap: 2rem;
   }
 }
