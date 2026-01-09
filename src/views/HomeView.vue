@@ -6,11 +6,12 @@ import GoogleMap from '@/components/GoogleMap.vue'
 // データの定義
 const data1 = {
   images: [
-    '/images/slider/image003.jpg',
-    '/images/slider/image004.jpg',
+    // '/images/slider/image003.jpg',
+    // '/images/slider/image004.jpg',
     '/images/slider/image005.jpg',
     '/images/slider/image001.jpg',
-    '/images/slider/image002.jpg'
+    '/images/slider/image011.jpg',
+    '/images/slider/image012.jpg'
   ]
 }
 
@@ -19,7 +20,6 @@ const data2 = {
     '/images/slider/image006.jpg',
     '/images/slider/image007.jpg',
     '/images/slider/image008.jpg',
-    '/images/slider/image009.jpg',
     '/images/slider/image010.jpg'
   ]
 }

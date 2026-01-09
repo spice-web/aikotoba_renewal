@@ -30,7 +30,7 @@
             子ども自身が自己選択できるように多くの選択肢を用意し、リラックスできる環境を整えプログラムに参加しやすいように雰囲気作りを行います。
           </div>
           <figure class="p-about-schedule__item-fig">
-            <img src="@/assets/images/about/image012.jpg" alt="" width="100%" height="auto" />
+            <img src="@/assets/images/about/image017.jpg" alt="" width="100%" height="auto" />
           </figure>
         </div>
 
@@ -42,7 +42,7 @@
           </div>
           <div class="p-about-schedule__item">個別支援計画をもとに、療育を行っております。</div>
           <figure class="p-about-schedule__item-fig">
-            <img src="@/assets/images/about/image013.jpg" alt="" width="100%" height="auto" />
+            <img src="@/assets/images/about/image016.jpg" alt="" width="100%" height="auto" />
           </figure>
         </div>
 
