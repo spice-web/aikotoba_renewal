@@ -11,7 +11,7 @@ export default defineConfig({
     vue(),
     VueDevTools(),
     Sitemap({
-      hostname: 'https://aikotoba.ltd'
+      hostname: 'https://willsapo.laughlines.jp'
     })
   ],
   resolve: {

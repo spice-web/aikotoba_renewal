@@ -38,24 +38,8 @@
 }
 .c-title__ig {
   margin-bottom: 2rem;
-  @media (min-width: 850px) {
+  @media (min-width: 1000px) {
     margin-bottom: 3.5rem;
-  }
-}
-
-// 現在はウィジェット使用のため非表示
-.box {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-  gap: 0.5rem;
-  img {
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
-  }
-  @media (min-width: 850px) {
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 2rem;
   }
 }
 </style>

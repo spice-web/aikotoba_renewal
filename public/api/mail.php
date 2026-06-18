@@ -1,5 +1,5 @@
 <?php
-header("Access-Control-Allow-Origin: https://aikotoba.ltd/");
+header("Access-Control-Allow-Origin: https://willsapo.laughlines.jp/");
 header("Access-Control-Allow-Headers: Content-Type");
 
 
@@ -86,7 +86,7 @@ if (strpos($contentType, 'application/json') !== false) {
   }
 
   // メールの送信先
-  $to = "aikotoba.1101@gmail.com";
+  $to = "info@willsapo.laughlines.jp";
 
   // ここにメール機能を追加する
   // 変数とタイムゾーンを初期化
@@ -100,11 +100,11 @@ if (strpos($contentType, 'application/json') !== false) {
 
   // へーダー情報を設定
   $header = "MIME-Version: 1.0\n";
-  $header .= "From: あいことば療育ラボ横川 <noreply@aikotoba.ltd>\n";
-  $header .= "Reply-To: あいことば療育ラボ横川 <noreply@aikotoba.ltd>\n";
+  $header .= "From: 放課後等デイサービス・児童発達支援ウィルサポ <noreply@willsapo.laughlines.jp>\n";
+  $header .= "Reply-To: 放課後等デイサービス・児童発達支援ウィルサポ <noreply@willsapo.laughlines.jp>\n";
 
   // 件名を設定
-  $auto_reply_subject = 'お問い合わせありがとうございます。【あいことば療育ラボ横川】';
+  $auto_reply_subject = 'お問い合わせありがとうございます。【放課後等デイサービス・児童発達支援ウィルサポ】';
   // 本文を設定
   $auto_reply_text  = "この度は、お問い合わせいただき誠にありがとうございます。\n下記内容でお問い合わせを受け付けました。\n\n";
   $auto_reply_text .= "お問い合わせ日時:" . date("Y-m-d H:i") . "\n";
@@ -113,12 +113,48 @@ if (strpos($contentType, 'application/json') !== false) {
   $auto_reply_text .= "メールアドレス： $email\n\n";
   $auto_reply_text .= "お問い合わせ内容: " . nl2br($content) . "\n\n\n\n";
   $auto_reply_text .= "=============================================\n";
-  $auto_reply_text .= "あいことば療育ラボ横川\n";
-  $auto_reply_text .= "事業所番号：3450219724\n";
-  $auto_reply_text .= "住所：〒733-0013 広島県広島市西区横川新町12-13\n";
-  $auto_reply_text .= "URL：https://aikotoba.ltd/\n";
+  $auto_reply_text .= "株式会社ラフラインズ\n";
+  $auto_reply_text .= "住所：〒734-0023 広島市南区東雲本町1丁目14-16-1\n";
+  $auto_reply_text .= "URL：https://laughlines.jp/\n";
   $auto_reply_text .= "TEL：082-236-6375\n";
-  $auto_reply_text .= "E-mail：aikotoba.1101@gmail.com\n";
+  $auto_reply_text .= "E-mail：info@laughlines.jp\n\n";
+  $auto_reply_text .= "=============================================\n";
+  $auto_reply_text .= "放課後等デイサービス・児童発達支援 ウィルサポ\n";
+  $auto_reply_text .= "URL：https://willsapo.laughlines.jp/\n";
+  $auto_reply_text .= "E-mail：info@willsapo.laughlines.jp\n\n";
+
+  $auto_reply_text .= "ウィルサポキッズ廿日市SSTs\n";
+  $auto_reply_text .= "サービス種別: 児童発達支援、放課後等デイサービス\n
+                      事業所番号: 3452700226\n
+                      営業時間: 平日 10：00～19：00 / 休日 9：00～18：00\n
+                      所在地: 広島県廿日市市住吉1-5-26 ローレルコート1階\n
+                      TEL: 0829-30-8723\n\n";
+
+ $auto_reply_text .= "ウィルサポキャンパス廿日市\n";
+ $auto_reply_text .= "サービス種別: 放課後等デイサービス\n
+                      事業所番号: 3452700234\n
+                      営業時間: 平日 10：00～19：00 / 休日 9：00～18：00\n
+                      所在地: 広島県廿日市市住吉1-5-26 ローレルコート2階\n
+                      TEL: 0829-30-8724\n\n";
+
+ $auto_reply_text .= "ウィルサポ学園\n";
+ $auto_reply_text .= "営業時間: 平日 10：00～12：00\n
+                      所在地: 広島県廿日市市住吉1-5-26 ローレルコート2階\n
+                      TEL: 0829-30-8724\n\n";
+
+ $auto_reply_text .= "ウィルサポ五日市\n";
+ $auto_reply_text .= "放課後等デイサービス・児童発達支援\n
+                      事業所番号: 3450223015\n
+                      営業時間: 平日 10：00～19：00 / 休日 9：00～18：00\n
+                      所在地: 広島県広島市佐伯区五日市駅前3-3-11\n
+                      TEL: 082-236-7022\n\n";
+
+ $auto_reply_text .= "ウィルサポプラス横川\n";
+ $auto_reply_text .= "サービス種別: 重心型放課後等デイサービス\n
+                      事業所番号: 3450223338\n
+                      営業時間: 平日 10：00～19：00 / 休日 9：00～18：00\n
+                      所在地: 広島県広島市西区横川新町12-13\n
+                      TEL: 082-236-6375\n";
 
   // メール送信
   $auto_reply_sent = mb_send_mail($email, $auto_reply_subject, $auto_reply_text, $header);
@@ -129,7 +165,7 @@ if (strpos($contentType, 'application/json') !== false) {
   $admin_reply_text = "下記内容でお問い合わせがありました。\n\n";
   $admin_reply_text .= "お問い合わせ日時：" . date("Y-m-d H:i") . "\n";
   $admin_reply_text .= "お名前：" . $name  . "(" . $kana . ")\n";
-  $admin_reply_text .= "電話番号" . $tel . "\n";
+  $admin_reply_text .= "電話番号：" . $tel . "\n";
   $admin_reply_text .= "メールアドレス：" . $email . "\n\n";
   $admin_reply_text .= "お問い合わせ内容：" . nl2br($content) . "\n\n";
 

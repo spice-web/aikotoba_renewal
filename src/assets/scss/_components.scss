@@ -51,6 +51,24 @@ $transition-duration: .3s;
     box-shadow: 0 4px 0 0 $dark-blue;
   }
 
+  &--pink {
+    @extend .c-button;
+    background: $pink;
+    box-shadow: 0 4px 0 0 $dark-pink;
+  }
+
+  &--white {
+    @extend .c-button;
+    background: white;
+    color: $main-color;
+    box-shadow: 0 4px 0 0 #284678;
+
+    &:active {
+      box-shadow: none;
+      transform: translateY(4px);
+    }
+  }
+
   &--disabled {
     @extend .c-button;
     background: #ccc;
@@ -68,10 +86,11 @@ $transition-duration: .3s;
   &--mail {
     @extend .c-button;
     width: 100%;
+    font-size: 1rem;
 
     span {
       &:before {
-        background-image: url("../assets/images/icon/icon_mail.png");
+        background-image: url("../assets/images/icon/icon_mail.webp");
       }
     }
   }
@@ -81,19 +100,41 @@ $transition-duration: .3s;
 
     span {
       &:before {
-        background-image: url("../assets/images/icon/icon_tel.png");
+        background-image: url("../assets/images/icon/icon_tel.webp");
       }
     }
   }
 
-
-  // 2段組レイアウト時
-  &--top {
-    margin-bottom: 1.5rem;
-
+  &__top {
+    @extend .c-button;
+    display: none;
+    
     @include mq() {
-      margin-bottom: 0;
-    }
+      position: fixed;
+      z-index: 102;
+      display: block;
+      width: 262px;
+      box-shadow: none;
+      background-color: $pink;
+      top: 0;
+      right: 4vw;
+      transform: translateY(0);
+      height: 50px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      border-bottom-left-radius: 32px;
+      border-bottom-right-radius: 32px;
+      font-weight: 300;
+      font-size: 1rem;
+
+      &:active {
+        transform: translateY(0);
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+    } 
   }
 
   &__bottom {
@@ -107,27 +148,23 @@ $transition-duration: .3s;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     z-index: 102;
+    background-color: $pink;
 
     &:active {
       transform: translateX(-50%);
     }
 
     @include mq() {
-      top: 0;
-      background: $main-color;
-      bottom: auto;
-      left: auto;
-      right: 4vw;
-      transform: translateY(0);
-      height: 50px;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      border-bottom-left-radius: 10px;
-      border-bottom-right-radius: 10px;
+      display: none;
+    }
+  }
 
-      &:active {
-        transform: translateY(0);
-      }
+  &__main {
+    display: flex;
+    flex-direction: column;
+
+    @include mq() {
+      flex-direction: row;
     }
   }
 
@@ -162,7 +199,7 @@ $transition-duration: .3s;
       line-height: 70px;
       font-size: 1rem;
       top: auto;
-      bottom: 2rem;
+      bottom: 2.5rem;
       right: 2rem;
 
       figure {
@@ -173,17 +210,45 @@ $transition-duration: .3s;
 }
 
 // タイトル
+// こんな事でお困りでは~
+// ウィルサポでは、お子様の発達を～
 .c-title {
   &__lv2 {
-    color: $main-color;
-    font-size: 1.375rem;
+    color: white;
+    font-size: 1.25rem;
     text-align: center;
-    line-height: 1.5;
-    margin-bottom: 3rem;
+    line-height: 1.75;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
 
     @include mq() {
-      font-size: 1.625rem;
+      font-size: 2.1rem;
+      letter-spacing: 5.1px;
       margin-bottom: 4rem;
+      letter-spacing: 2;
+    }
+  }
+
+  &__lv4 {
+    color: white;
+    font-size: 1.25rem;
+    text-align: center;
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    letter-spacing: 0;
+
+     @include mq() {
+      font-size: 1.375rem;
+      letter-spacing: 5.1px;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    @include mq() {
+      text-align: center;
+      font-size: 1.375rem;
+      margin-bottom: 3rem;
     }
   }
 
@@ -194,17 +259,29 @@ $transition-duration: .3s;
     justify-content: center;
     color: white;
     text-align: center;
-    background: $main-color;
+    background: #FF5995;
     height: 90px;
     border-radius: 45px;
     // width: 90%;
     margin-left: auto;
     margin-right: auto;
+
+    &--gigyosho {
+      background: $main-color;
+      // width: 234px;
+      // height: 4rem;
+
+      &.p-page-headline__title {
+        // width: 234px;
+        margin-top: 0;
+        margin-bottom: 50px;
+      }
+    }
   }
 
   // 背景画像ありタイトル
   &__lv3 {
-    background-image: url("../assets/images/parts/title.png");
+    background-image: url("../assets/images/parts/title.webp");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -218,7 +295,7 @@ $transition-duration: .3s;
     font-weight: var(--bold);
     color: white;
     margin-top: calc(-2rem + -55px);
-    margin-bottom: 2rem;
+    // margin-bottom: 2rem;
 
     @include mq() {
       font-size: 36px;
@@ -253,7 +330,7 @@ $transition-duration: .3s;
 
     &--no-border {
       @extend .c-title__box;
-      font-size: 1.375rem;
+      font-size: 1.25rem;
       border-bottom: none;
       padding-bottom: 0;
       margin-top: 5rem;
@@ -275,7 +352,7 @@ $transition-duration: .3s;
   }
 
   &__contact {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     padding-bottom: 0;
 
     @include mq() {
@@ -309,7 +386,7 @@ $transition-duration: .3s;
     margin-bottom: 0;
 
     @include mq() {
-      margin-top: -10rem;
+      margin-top: -6rem;
     }
 
     &:before {
@@ -318,7 +395,7 @@ $transition-duration: .3s;
       top: .5rem;
       left: 50%;
       transform: translateX(-50%);
-      background-image: url("../assets/images/icon/icon_ig.png");
+      background-image: url("../assets/images/icon/icon_ig.webp");
       background-size: contain;
       width: 20px;
       height: 20px;
@@ -335,7 +412,7 @@ $transition-duration: .3s;
       position: absolute;
       top: 1rem;
       right: -100px;
-      background-image: url("../assets/images/parts/followme.png");
+      background-image: url("../assets/images/parts/followme.webp");
       background-size: contain;
       width: 95px;
       height: 72px;
@@ -406,7 +483,6 @@ $transition-duration: .3s;
 
 //ドロワー
 .c-drawer {
-
   //ボタン
   &__btn {
     position: fixed;
@@ -416,7 +492,7 @@ $transition-duration: .3s;
     width: 63px;
     height: 60px;
     margin-top: 10px;
-    margin-right: 10px;
+    margin-right: 2px;
     background: rgba(255, 255, 255, 0.5);
     overflow: hidden;
     cursor: pointer;
@@ -433,7 +509,7 @@ $transition-duration: .3s;
       transition: $transition-duration;
 
       &:nth-child(1) {
-        transform: translate(-50%, -12px);
+        transform: translate(-50%, -10px);
       }
 
       &:nth-child(2) {
@@ -441,7 +517,7 @@ $transition-duration: .3s;
       }
 
       &:nth-child(3) {
-        transform: translate(-50%, 12px);
+        transform: translate(-50%, 8px);
       }
     }
 
@@ -539,10 +615,8 @@ $transition-duration: .3s;
       margin-top: 10.5rem;
     }
   }
-
-  height: 600px;
   width: 100%;
-  margin-top: 0.75rem;
+  aspect-ratio: 16 / 9;
 
   @include mq() {
     height: 760px;
@@ -552,8 +626,17 @@ $transition-duration: .3s;
 // 背景のみ
 .c-bg {
   &__blue {
-    background-image: url("../assets/images/bg/bg_light_blue.jpg");
+    background-image: url("../assets/images/bg/bg_light_blue.webp");
     background-repeat: repeat;
     background-size: 250px 250px;
+  }
+  // 濃いブルー
+  &__dark-blue {
+    background-image: url("../assets/images/bg/bg_dark_blue.webp");
+    background-repeat: repeat;
+    background-size: cover;
+    background-position: center center;
+    background-color: rgba(255, 255, 255, 0.3);
+    // background-size: 250px 250px;
   }
 }

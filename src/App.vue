@@ -8,26 +8,29 @@ import FooterComponent from './components/AppFooter.vue'
 
 <template>
   <header class="l-header">
-    <h1 class="l-header__logo">
-      <router-link :to="{ name: 'Home' }">
+    <div class="">
+      <router-link :to="{ name: 'Home' }" class="l-header__logo">
         <img
-          src="./assets/images/logo/logo_side_k.png"
-          alt="あいことば療育ラボ横川"
-          width="auto"
-          height="100%"
+          src="./assets/images/logo/wsp_logo_wide.webp"
+          alt="放課後等デイサービス・児童発達支援ウィルサポ"
+          width="100%"
+          height="auto"
         />
       </router-link>
-    </h1>
+    </div>
 
     <ul class="l-header__nav">
       <li class="l-header__nav-item">
-        <router-link to="/#possible">あいことば療育ラボにできること</router-link>
+        <router-link to="/#possible">ウィルサポにできること</router-link>
       </li>
       <li class="l-header__nav-item">
-        <router-link :to="{ name: 'About' }">1日のながれ</router-link>
+        <router-link to="/#flow">ご利用までの流れ</router-link>
+      </li>
+      <li class="l-header__nav-item">
+        <router-link to="/about">1日のながれ</router-link>
       </li>
       <li class="l-header__nav-item"><router-link to="/about#price">ご利用料金</router-link></li>
-      <li class="l-header__nav-item"><router-link to="/#company">事業所詳細</router-link></li>
+      <li class="l-header__nav-item"><router-link to="/#office">事業所詳細</router-link></li>
     </ul>
 
     <CustomDrawer />
@@ -59,9 +62,9 @@ export default {
     createTitleDesc: function (routeInstance) {
       // titleを設定する処理
       if (routeInstance.meta.title) {
-        document.title = routeInstance.meta.title + ' | あいことば療育ラボ横川'
+        document.title = routeInstance.meta.title + ' | 放課後等デイサービス・児童発達支援ウィルサポ'
       } else {
-        document.title = 'あいことば療育ラボ横川'
+        document.title = '放課後等デイサービス・児童発達支援ウィルサポ'
       }
 
       // descriptionを設定する処理
@@ -74,7 +77,7 @@ export default {
           .querySelector('meta[name="description"]')
           .setAttribute(
             'content',
-            'あいことば療育ラボ横川は、広島市西区横川新町にある放課後等デイサービスです。'
+            '「ウィルサポ」は、未就学児童から高校生まで発達状況に合わせて一貫した療育を継続的に受けて頂ける事業所です。あらゆる背景をもった子どもたちが、身体的・精神的に自分らしく暮らせる社会をめざして、さまざまなプログラムをご用意しております。'
           )
       }
     }

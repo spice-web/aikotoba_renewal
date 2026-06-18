@@ -3,25 +3,25 @@
   <div class="c-bg__blue">
     <div class="l-inner--lg l-contact">
       <div class="l-contact__box">
-        <h4 class="c-title__box u-no-border u-fz-lg c-title__contact">
+        <h4 class="c-title__box u-color__pink u-no-border u-fz-lg c-title__contact">
           お気軽に<br class="br-sp" />お問い合わせください
         </h4>
         <div class="l-contact__head">
-          <div class="u-color__dark-blue bold l-contact__tel">
-            <img src="../assets/images/icon/icon_tel_b.png" alt="" class="l-contact__tel-icon" /><a
+          <div class="u-color__pink bold l-contact__tel">
+            <img src="../assets/images/icon/icon_tel_p.webp" alt="" class="l-contact__tel-icon" /><a
               class="nolink"
-              >082-236-6375</a
+              >082-236-8113</a
             >
           </div>
-          <div class="center">【受付時間】<br />月～金15:00～18:00 ／ 祝日13:00～18:00</div>
-          <a href="tel:082-236-6375" class="nolink c-button--tel l-contact__button"
+          <div class="center u-ls--0">【受付時間】<br />月～金 15:00～18:00 ／ 祝日 13:00～18:00</div>
+          <a href="tel:082-236-8113" class="nolink c-button--tel l-contact__button"
             ><span>お電話でお問い合わせ</span></a
           >
         </div>
         <div class="l-contact__border"></div>
         <div class="l-contact__foot">
-          <div class="u-color__dark-blue bold l-contact__mail">aikotoba.1101@gmail.com</div>
-          <div class="center">【受付時間】<br />24時間 ／ 365日</div>
+          <div class="u-color__pink bold l-contact__mail">info@willsapo.laughlines.jp</div>
+          <div class="center u-ls--0">【受付時間】<br />24時間 ／ 365日</div>
           <router-link to="/contact" class="c-button--mail l-contact__button"
             ><span>メールでお問い合わせ</span></router-link
           >
@@ -30,3 +30,14 @@
     </div>
   </div>
 </template>
+
+<style scoped lang="scss">
+.c-button--tel, .c-button--mail {
+  width: 70%;
+  padding-left: 2rem;
+}
+
+.l-contact__mail {
+  line-height: 1.75;
+}
+</style>

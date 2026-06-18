@@ -14,13 +14,16 @@
     <ul class="c-drawer__nav">
       <li><router-link to="/" @click="close">トップ</router-link></li>
       <li>
-        <router-link to="/#possible" @click="close">あいことば療育ラボにできること</router-link>
+        <router-link to="/#possible" @click="close">ウィルサポにできること</router-link>
       </li>
-      <li><router-link to="/about" @click="close">1日のながれ</router-link></li>
+      <li><router-link to="/about" @click="close">とある1日のながれ</router-link></li>
       <li><router-link to="/about#price" @click="close">ご利用料金</router-link></li>
-      <li><router-link to="/#company" @click="close">事業所詳細</router-link></li>
-      <li><router-link to="/#map" @click="close">アクセス</router-link></li>
+      <li>
+        <router-link to="/#flow" @click="close">ご利用までの流れ</router-link>
+      </li>
+      <li><router-link to="/#office" @click="close">事業所一覧</router-link></li>
       <li><router-link to="/contact" @click="close">お問い合わせ</router-link></li>
+      <li><router-link to="/privacy" @click="close">プライバシーポリシー</router-link></li>
     </ul>
   </div>
 </template>

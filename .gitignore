@@ -28,3 +28,7 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+
+# ファイル
+/assets/images/PNG
+/assets/images/JPG

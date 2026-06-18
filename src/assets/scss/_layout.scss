@@ -4,8 +4,8 @@
 
 .l-header {
   height: 80px;
-  padding: 0 0 0 4vw;
   display: flex;
+  justify-content: space-around;
   align-items: center;
 
   @include mq() {
@@ -13,9 +13,21 @@
   }
 
   &__logo {
-    display: block;
-    width: auto;
-    height: 50px;
+    display: flex;
+    align-items: center;
+    width: 228.25px;
+    margin-left: auto;
+    margin-right: auto;
+
+    img {
+      width: 100%;
+    }
+
+    @include mq() {
+      // 850px(200px) 〜 1280px(365px) を vw で可変
+      width: clamp(280px, 38.3721vw - 126.1628px, 365px);
+      margin-left: min(3vw, 32px);
+    }
   }
 
   &__nav {
@@ -24,7 +36,7 @@
     @include mq() {
       display: flex;
       margin-left: auto;
-      margin-right: 4vw;
+      margin-right: min(3vw, 32px);
       color: $main-color;
       font-weight: bold;
       gap: 1vw;
@@ -44,7 +56,7 @@
   &__box {
     border-radius: 12px;
     margin-top: 5rem;
-    padding: 3rem 1.5rem;
+    padding: 3rem 1.5rem 3.5rem;
     font-size: 0.875rem;
     line-height: 1.5;
     background: white;
@@ -52,7 +64,7 @@
 
     @include mq() {
       background-color: transparent;
-      background-image: url(../assets/images/bg/bg_w.png);
+      background-image: url(../assets/images/bg/bg_w.webp);
       background-size: contain;
       background-repeat: no-repeat;
       display: grid;
@@ -132,7 +144,11 @@
 .l-footer {
   position: relative;
   color: white;
-  background: $main-color;
+  // background: $main-color;
+  background-image: url(../assets/images/bg/bg_dark_blue.webp);
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
   font-size: .75rem;
   padding-bottom: 4.5rem;
 
@@ -141,15 +157,15 @@
   }
 
   &__inner {
-    max-width: 1280px;
+    max-width: calc(1280px + 2rem * 2);
     margin-left: auto;
     margin-right: auto;
-    padding: 2.5rem 2.5rem 3.5rem;
+    padding: 2.5rem 2.5rem;
 
     @include mq() {
       grid-template-columns: 1fr auto;
       gap: 2rem;
-      padding-bottom: 5rem;
+      padding: 4rem 2.5rem 5rem;
     }
   }
 
@@ -170,18 +186,27 @@
   }
 
   &__logo {
-    background-image: url("../assets/images/logo/logo_up_w.png");
-    background-size: contain;
-    display: block;
-    width: 257.5px;
-    height: 106px;
+    width: 200px;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
+    font-size: 0.625rem;
+    letter-spacing: 0.05em;
+    
+    span {
+      display: block;
+      font-size: 2.1rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
 
     @include mq() {
-      background-image: url("../assets/images/logo/logo_side_w.png");
       width: 400px;
-      height: 80px;
+      height: auto;
+
+      &-text {
+        display: none;
+      }
     }
   }
 
@@ -200,39 +225,25 @@
     }
   }
 
-  &__info {
-    margin-bottom: 2rem;
-
+  &__info-wrap {
     @include mq() {
-      margin-top: 1rem;
-      margin-left: 5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 
-  &-nav {
-    font-size: 0.875rem;
-    // margin-left: .25rem;
-    padding: 1rem 0;
+  &__info {
+    font-weight: 300;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
     margin-bottom: 1rem;
-    border-top: 1px solid #FFF;
-    border-bottom: 1px solid #FFF;
 
     @include mq() {
-      display: grid;
-      grid-template-columns: auto auto;
-      padding-top: 2.25rem;
-      border-top: none;
-      column-gap: .5rem;
-    }
-
-    &__item {
-      a {
-        text-decoration: none;
-      }
-
-      &:before {
-        content: "●";
-      }
+      font-size: 0.875rem;
+      margin-top: 1rem;
+      margin-left: clamp(0rem, calc(26.0465vw - 13.8372rem), 7rem);
+      line-height: 1.75;
     }
   }
 
@@ -248,7 +259,6 @@
     &:first-of-type {
       margin-bottom: 1rem;
     }
-
 
     img {
       height: auto;
@@ -281,13 +291,70 @@
     }
   }
 
-
+  // コピーライト
   &__copy {
+    font-weight: 300;
     font-size: 0.625rem;
     text-align: center;
+
+    @include mq() {
+      width: 100%;
+      max-width: calc(1280px + 2rem * 2);
+      text-align: right;
+      margin-left: auto;
+      margin-right: auto;
+      padding-right: 2rem;
+      padding-left: 2rem;
+    }
   }
 }
 
+// フッターナビ
+.l-footer-nav {
+  font-size: 0.875rem;
+  font-weight: normal;
+  line-height: 2;
+  // letter-spacing: 0.05em;
+  // margin-left: .25rem;
+  padding: 0.675rem 0;
+  margin-bottom: 1rem;
+  border-top: 1px solid #FFF;
+  border-bottom: 1px solid #FFF;
+
+  @include mq() {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding-top: 2.25rem;
+    border-top: none;
+    column-gap: .5rem;
+  }
+
+  &__logo {
+    width: 81px;
+    margin-bottom: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include mq() {
+      margin-top: 4.3rem;
+    }
+  }
+
+  &__item {
+    a {
+      text-decoration: none;
+      font-weight: 300;
+    }
+
+    &:before {
+      content: "●";
+      margin-right: .5rem;
+    }
+  }
+}
+
+
+// レイアウトユーティリティ
 .l-flex {
   display: flex;
   justify-content: space-between;
@@ -393,8 +460,11 @@
   }
 
   &--blue {
+    @extend .l-inner;
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
     // padding: 1rem 2rem 3rem;
-    // background-image: url("../assets/images/bg/bg_light_blue.jpg");
+    // background-image: url("../assets/images/bg/bg_light_blue.webp");
     // background-repeat: repeat;
     // background-size: 500px 500px;
     // color: white;
@@ -404,6 +474,9 @@
     margin-bottom: 0;
     @extend .l-inner;
     padding: 1rem .75rem 3rem;
+    @include mq() {
+      padding: 1rem 2rem 3rem;
+    }
   }
 }
 
@@ -431,7 +504,7 @@
 
   &--blue {
     @extend .l-box;
-    background-image: url("../assets/images/bg/bg_light_blue.jpg");
+    background-image: url("../assets/images/bg/bg_light_blue.webp");
     background-repeat: repeat;
 
     @include mq() {
@@ -446,6 +519,7 @@
   }
 
   &__text {
+    font-size: 0.75rem;
     @include mq() {
       text-align: center;
     }

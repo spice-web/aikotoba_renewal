@@ -1,260 +1,288 @@
 <script setup>
 import TopSlider from '@/components/TopSlider.vue'
 import IndexSlider from '@/components/IndexSlider.vue'
-import GoogleMap from '@/components/GoogleMap.vue'
+import officeList from '@/components/officeList.vue'
+import scheduleImg1 from '@/assets/images/about/wsp_p015.webp'
+import scheduleImg2 from '@/assets/images/about/wsp_p016.webp'
+import scheduleImg3 from '@/assets/images/about/wsp_p017.webp'
+import scheduleImg4 from '@/assets/images/about/wsp_p018.webp'
+import sliderImg1 from '@/assets/images/slider/wsp_p010.webp'
+import sliderImg2 from '@/assets/images/slider/wsp_p011.webp'
+import sliderImg3 from '@/assets/images/slider/wsp_p012.webp'
+import sliderImg4 from '@/assets/images/slider/wsp_p013.webp'
+import sliderImg5 from '@/assets/images/slider/wsp_p014.webp'
+
+// ご利用までの流れ
+const scheduleSteps = [
+  {
+    title: 'お問い合わせ',
+    text: ['まずはお気軽に', 'お問い合わせください。'],
+    img: scheduleImg1
+  },
+  {
+    title: '見学、体験',
+    text: ['雰囲気を見学・体験いただきます。気になることはご相談ください！'],
+    img: scheduleImg2
+  },
+  {
+    title: 'ご契約',
+    text: ['内容にご納得いただいてのご契約となりますのでご安心ください'],
+    img: scheduleImg3
+  },
+  {
+    title: '利用開始',
+    text: ['まずはお気軽に', 'お問い合わせください'],
+    img: scheduleImg4
+  }
+]
 
 // データの定義
-const data1 = {
-  images: [
-    // '/images/slider/image003.jpg',
-    // '/images/slider/image004.jpg',
-    '/images/slider/image005.jpg',
-    '/images/slider/image001.jpg',
-    '/images/slider/image011.jpg',
-    '/images/slider/image012.jpg'
-  ]
-}
-
 const data2 = {
-  images: [
-    '/images/slider/image006.jpg',
-    '/images/slider/image007.jpg',
-    '/images/slider/image008.jpg',
-    '/images/slider/image010.jpg'
-  ]
+  images: [sliderImg1, sliderImg2, sliderImg3, sliderImg4, sliderImg5]
 }
 </script>
 
 <template>
   <div id="top-slider">
-    <TopSlider class="top-slider" />
+    <TopSlider class="top-slider" :images="data2.images" />
   </div>
 
   <!-- introduction -->
   <div style="overflow-x: clip">
     <div class="p-intro__wrap">
-      <figure class="p-intro__img01 br-sp">
-        <img src="@/assets/images/top/top_001_bg.png" width="100%" alt="" />
-      </figure>
-      <figure class="p-intro__img01 br-pc">
-        <img src="@/assets/images/top/top_001_bg_pc.svg" width="1803" height="889" alt="" />
-      </figure>
-      <div class="p-intro__content">
-        <img src="@/assets/images/logo/logomark.png" alt="" class="p-intro__logo" />
+      <picture class="p-intro__img01">
+        <source
+          srcset="@/assets/images/top/top_001_bg_pc.webp"
+          media="(min-width: 850px)"
+        />
+        <img src="@/assets/images/top/top_001_bg.webp" width="100%" alt="" />
+      </picture>
+      <!-- <div class="p-intro__content">
+        <img src="@/assets/images/logo/logomark.webp" alt="" class="p-intro__logo" />
         <p class="p-intro__text">
-          あいことば療育ラボ横川は<br />ケア児・発達障害児童にも<br />
+          ウィルサポは<br />ケア児・発達障害児童にも<br />
           対応したインクルーシブ<br />療育を提供する放課後等<br />デイサービスです
         </p>
-      </div>
+      </div> -->
     </div>
     <div class="center bold p-intro__foot">
       ひとりひとりに合った<br
         class="br-sp"
-      />オーダーメイドの支援計画を提供し、<br />お子様が主役となって自発的に活動ができるように<br />ご支援いたします。
+      />オーダーメイドの支援計画を提供し、<br />お子様が主役となって自発的に活動ができるように<br />ご支援させていただきます。
       <div class="p-intro__foot-img">
         <figure>
-          <img src="@/assets/images/top/top_illu003.png" width="65" height="auto" alt="" />
+          <img src="@/assets/images/top/top_illu005.webp" width="118" height="auto" alt="" />
         </figure>
         <figure>
-          <img src="@/assets/images/top/top_illu004.png" width="65" height="auto" alt="" />
+          <img src="@/assets/images/top/top_illu006.webp" width="152" height="auto" alt="" />
         </figure>
       </div>
     </div>
   </div>
-
-  <!-- headline -->
-  <div class="c-bg__blue p-page-headline">
-    <div class="p-page-headline__wrap">
-      <h2 id="possible" class="c-title__label p-page-headline__title">
-        あいことば療育ラボ横川だから<br />できること
-      </h2>
+  
+  <!-- メインコンテンツ -->
+  <div class="c-bg__dark-blue p-index-main__contents">
+    <div class="walking-figure">
+      <img src="@/assets/images/top/walking_figure.webp" alt="" width="100%" height="auto" />
       <img
-        src="@/assets/images/top/top_illu_title01.png"
+        src="@/assets/images/top/top_illu_title01.webp"
         width="125"
         height="auto"
         alt=""
         class="p-page-headline__img --left"
       />
       <img
-        src="@/assets/images/top/top_illu_title02.png"
+        src="@/assets/images/top/top_illu_title02.webp"
         width="125"
         height="auto"
         alt=""
         class="p-page-headline__img --right"
       />
     </div>
-  </div>
-
-  <!-- メインコンテンツ -->
-  <div class="c-bg__blue">
-    <h2 class="c-title__lv2 br-pc">
-      専門スタッフによる充実した療育と医療的ケアで、お子さまの成長を支えます。
+    <h2 id="possible" class="c-title__label p-page-headline__title p-page-headline__title--pink">
+      ウィルサポにできること
     </h2>
-
-    <!-- 上段スライダー -->
-    <IndexSlider :images="data1.images" />
-
-    <h2 class="c-title__lv2 br-sp index-title__bg-star">
-      専門スタッフによる<br />充実した療育と医療的ケアで、<br />お子さまの成長を支えます。
+    <h2 class="c-title__lv2 u-mb--0">
+      こんな事で<br class="br-sp" />お困りではありませんか？？
     </h2>
+    <ul class="okomari__list">
+      <li class="okomari__item"><img src="@/assets/images/top/okomari01.webp" alt="" width="100%" /></li>
+      <li class="okomari__item"><img src="@/assets/images/top/okomari02.webp" alt="" width="100%" /></li>
+      <li class="okomari__item"><img src="@/assets/images/top/okomari03.webp" alt="" width="100%" /></li>
+      <li class="okomari__item"><img src="@/assets/images/top/okomari04.webp" alt="" width="100%" /></li>
+    </ul>
 
-    <div class="l-inner l-grid-pc--col3-auto p-index-main__contents">
-      <div class="l-box">
-        <h3 class="c-title__box">一人ひとりに寄り添う<br />細やかな療育を</h3>
-        <p>
-          個性を大事にし、個別療育や協調性や思いやりなどのソーシャルスキルを養うために集団療育も取り入れています。
-        </p>
-      </div>
-      <div class="l-box">
-        <h3 class="c-title__box">専門職員による<br />充実した療育を</h3>
-        <p>
-          訪問看護ステーションが併設しており、在宅支援との密な連携を行い、看護師、理学療法士、作業療法士、言語聴覚士など、それぞれの専門性を発揮した支援プログラムでお子様の成長をお手伝いいたします。
-        </p>
-      </div>
-      <div class="l-box">
-        <h3 class="c-title__box">専門スタッフによる<br />医療的ケアを</h3>
-        <p>主治医の指示書を基に、看護師および研修を受けた専門スタッフが医療的ケアを行います。</p>
-        <ul class="c-list__blue p-index-main__list">
-          <li>人工呼吸器による呼吸管理</li>
-          <li>経鼻、胃ろうなどの経管栄養</li>
-          <li>吸引、吸入</li>
-          <li>人工肛門（ストーマ）の管理</li>
-          <li>導尿</li>
-          <li>血糖値測定やインスリン注射</li>
-          <li>発作時の対応</li>
-          <li>バイタルチェック</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="p-index-main__contents--down">
-      <!-- 下段 -->
-      <div class="l-inner l-grid-pc--col3-auto p-index-main__contents">
-        <div class="l-box">
-          <h3 class="c-title__box">親と子の双方に<br />寄り添ったサポートを</h3>
-          <p>
-            お子さまが快適に過ごせることはもちろん、ご家族の休息時間等を生み出すレスパイトケアを提供。保護者の方と面談やペアレントトレーニングを重ね、親と子の双方に寄り添ったサポートをいたします。また必要に応じて、お子さまが通う学校等との情報共有・連携も行います。
-          </p>
-        </div>
-        <div class="l-box">
-          <h3 class="c-title__box">地域や社会とつながる<br />さまざまな体験活動</h3>
-          <p>
-            体験では、「見る（視覚）」「聞く（聴覚）」「味わう（味覚）」「嗅ぐ（嗅覚）」「触れる（触覚）」を働かせ、物事を感覚的にとらえることができます。また、さまざまな体験活動を通じて家族や周囲の人々、地域や社会とつながることで、子どもは居場所の確保や共存の精神、自他共に大切するということを学べます。
-          </p>
-        </div>
-        <div class="l-box">
-          <h3 class="c-title__box">併設する訪問看護<br />ステーションとの連携</h3>
-          <p>
-            併設する訪問看護ステーションの看護師・療法士と連携し、より細やかな配慮のもとでケアと支援を行い、お子さまとご家族が安心して過ごせる環境を提供します。在宅等での困りごとを共有し、課題に一緒に取り組みます。
-          </p>
-          <ul class="c-icon__list">
-            <li>コミュニケーション練習</li>
-            <li>摂食練習</li>
-            <li>書字練習</li>
-            <li>箸・スプーン練習</li>
-            <li>ボタンやひも結び練習</li>
-            <li>等</li>
-          </ul>
+    <div class="p-index-main__inner">
+      <h2 class="c-title__lv2 ">
+        ウィルサポでは、<br class="br-sp" />お子様の発達を<br />『あそび×ソーシャルスキル』<br class="br-sp" />をテーマに<br />サポートしています。
+      </h2>
+  
+      <div class="p-index-main__catch-box">
+        <!-- オブジェクト -->
+        <figure class="p-index-main__object">
+          <img src="@/assets/images/top/wsp_png04.webp" alt="" width="100%" height="auto" />
+        </figure>
+        <div class="p-index-main__catch">
+          ～SST・創造・感覚統合・体験を<br class="br-sp" />柱としたプログラム～
         </div>
       </div>
+  
+      <ul class="p-index-main__program-list">
+        <li class="p-index-main__program-list__item"><figure><img src="@/assets/images/program/program_sst.webp" alt="" width="100%" height="auto"><figcaption>SST</figcaption></figure></li>
+        <li class="p-index-main__program-list__item">
+          <figure>
+            <img src="@/assets/images/program/program_creative.webp" alt="" width="100%" height="auto">
+            <figcaption>創作活動</figcaption>
+          </figure>
+          </li>
+        <li class="p-index-main__program-list__item"><figure><img src="@/assets/images/program/program_sensory.webp" alt="" width="100%" height="auto"><figcaption>感覚統合</figcaption></figure></li>
+        <li class="p-index-main__program-list__item"><figure><img src="@/assets/images/program/program_nature.webp" alt="" width="100%" height="auto"><figcaption>体験活動</figcaption></figure></li>
+      </ul>
 
-      <IndexSlider class="splide p-index-main__contents--down-slider" :images="data2.images" />
-    </div>
+
+<!--
+==================================================== 
+サポート
+====================================================
+-->
+      <div class="p-index-main__support-block">
+        <div>
+          <h3 class="c-title__lv4 p-index-main__support-title">
+            発達の遅れがあるお子様への<br class="br-sp" />療育の提供、<br class="br-pc" />放課後等の<br class="br-sp" />居場所の提供を行なっています。
+          </h3>
+          <p class="p-index-main__support-text u-color--white u-mb--xs">
+            第三の世界と言われる放課後の大切な時間を大人も子ども一緒になって関わり、学んでいきます。<br />
+            失敗して良い時期にたくさん失敗もして、様々な人にも助けられ、少しずつ自分の力で乗り越えていけるように応援していきます。
+          </p>
+        </div>
+        <figure class="p-index-main__support-figure">
+          <img src="@/assets/images/program/wsp_p009.webp" alt="" width="100%" height="auto" />
+        </figure>
+      </div>
+<!-- サポート -->
+    </div><!-- ./l-inner -->
 
     <div class="p-index-button__wrap">
-      <router-link to="/about#price" class="c-button--blue c-button--top">料金について</router-link>
-      <router-link to="/about" class="c-button--blue">一日の流れ</router-link>
+      <router-link to="/about#price" class="c-button--white c-button--top">ご利用料金</router-link>
+      <router-link to="/about" class="c-button--white c-button--top">とある1日の流れ</router-link>
     </div>
-  </div>
 
-  <!-- company -->
-  <div id="company" class="p-index-about__logo">
-    <img
-      src="@/assets/images/logo/logo_up_k.png"
-      width="100%"
-      height="auto"
-      alt="あいことば療育ラボ横川"
-      class="p-index-about__img"
-    />
-  </div>
-  <div class="l-inner--lg">
-    <div class="l-box--blue l-box--sm p-index-about__def">
-      <dl class="c-list__blue">
-        <dt>活動内容</dt>
-        <dd>
-          ソーシャルスキルトレーニング(SST) ／ <span class="is-nowrap">感覚統合あそび</span> ／<br
-            class="br-pc"
-          />創作あそび ／ <span class="is-nowrap">自然体験など</span>
-        </dd>
-      </dl>
-      <dl class="c-list__blue">
-        <dt>時間</dt>
-        <dd>月～金 15:00～18:00 ／<br />祝日13:00～18:00</dd>
-      </dl>
-      <dl class="c-list__blue">
-        <dt>サービス種別</dt>
-        <dd>障害児通所系サービス、<br />放課後等デイサービス</dd>
-      </dl>
-      <dl class="c-list__blue">
-        <dt>事業所番号</dt>
-        <dd><a class="nolink">3450219724</a></dd>
-      </dl>
-      <dl class="c-list__blue">
-        <dt>住所</dt>
-        <dd>
-          〒733-0013<br />広島県広島市西区横川新町12-13
-          <router-link to="/#map" class="p-index-about__icon">MAP</router-link>
-        </dd>
-      </dl>
-      <dl class="c-list__blue">
-        <dt>電話</dt>
-        <dd><a class="nolink">082-236-6375</a></dd>
-      </dl>
-      <dl class="c-list__blue">
-        <dt>FAX</dt>
-        <dd><a class="nolink">082-553-0966</a></dd>
-      </dl>
-      <dl class="c-list__blue">
-        <dt>自治体名</dt>
-        <dd>広島市</dd>
-      </dl>
+    <IndexSlider class="splide" :images="data2.images" />
+
+  </div><!-- メインコンテンツ -->
+
+<!-- ご利用までの流れ -->
+  <div id="flow" class="l-inner">
+    <div class="p-page-headline__title c-title__label c-title__label--gigyosho">ご利用までの流れ</div>
+
+    <div class="p-about-schedule__mainWrap">
+      <div
+        v-for="(step, index) in scheduleSteps"
+        :key="index"
+        class="p-about-schedule__wrap"
+      >
+        <figure :class="['p-about-schedule__item-fig', { '--last': index === scheduleSteps.length - 1 }]">
+          <span>{{ index + 1 }}</span>
+          <img :src="step.img" alt="" width="100%" height="auto" />
+        </figure>
+        <div>
+          <div class="p-about-schedule__title">{{ step.title }}</div>
+          <div :class="['p-about-schedule__item', { '--last': index === scheduleSteps.length - 1 }]">
+            <template v-for="(line, i) in step.text" :key="i">
+              <br v-if="i > 0" />{{ line }}
+            </template>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  </div><!-- ./l-inner -->
+<!-- ご利用までの流れ -->
 
-  <div id="map"></div>
-  <!-- google map -->
-  <div class="c-map__wrap">
-    <div class="c-title__map">ACCESS</div>
-    <GoogleMap />
-  </div>
+  <!-- 事業所一覧 -->
+  <div id="office" class="p-page-headline__title c-title__label c-title__label--gigyosho">事業所一覧</div>
+  <officeList />
 </template>
 
 <style scoped lang="scss">
-.index-title__bg-star {
+// .index-title__bg-star {
+//   position: relative;
+//   z-index: 0;
+//   &:before {
+//     content: '';
+//     position: absolute;
+//     display: block;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//     width: 375px;
+//     height: 160px;
+//     background-image: url('../assets/images/parts/star_04.webp');
+//     background-repeat: no-repeat;
+//     background-position: center center;
+//     background-size: 375px 160px;
+//     z-index: -1;
+//   }
+// }
+.p-index-main__contents {
   position: relative;
-  z-index: 0;
-  &:before {
-    content: '';
-    position: absolute;
-    display: block;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 375px;
-    height: 160px;
-    background-image: url('../assets/images/parts/star_04.png');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 375px 160px;
-    z-index: -1;
+  padding-top: 5rem;
+  padding-bottom: 1.25rem;
+  margin-bottom: 120px;
+}
+
+.walking-figure {
+  z-index: 101;
+  position: absolute;
+  width: 310px;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  img {
+    &:nth-child(2), &:nth-child(3) {
+      display: none;
+    }
+  }
+  @media screen and (min-width: 1080px) {
+    img {
+      &:first-child {
+        display: none;
+      }
+    }
+    img {
+      &:nth-child(2), &:nth-child(3) {
+        display: block;
+      }
+    }
+    width: 1098px;
+    top: -100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 600px;
   }
 }
 
-.p-index-button__wrap {
-  padding-bottom: 7rem;
-  background-image: url('../assets/images/parts/star_04.png');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 375px 160px;
+.okomari {
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0rem;
+    margin-top: 2rem;
+    margin-bottom: 60px;
+
+    @media screen and (min-width: 850px) {
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: -1rem;
+      margin-bottom: 133px;
+    }
+  }
+  &__item {
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+.splide {
+  margin-bottom: 0;
 }
 </style>
