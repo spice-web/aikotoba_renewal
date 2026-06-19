@@ -124,37 +124,37 @@ if (strpos($contentType, 'application/json') !== false) {
   $auto_reply_text .= "E-mail：info@willsapo.laughlines.jp\n\n";
 
   $auto_reply_text .= "ウィルサポキッズ廿日市SSTs\n";
-  $auto_reply_text .= "サービス種別: 児童発達支援、放課後等デイサービス\n
-                      事業所番号: 3452700226\n
-                      営業時間: 平日 10：00～19：00 / 休日 9：00～18：00\n
-                      所在地: 広島県廿日市市住吉1-5-26 ローレルコート1階\n
-                      TEL: 0829-30-8723\n\n";
+  $auto_reply_text .= "サービス種別: 児童発達支援、放課後等デイサービス\n";
+  $auto_reply_text .= "事業所番号: 3452700226\n";
+  $auto_reply_text .= "営業時間: 平日 10：00～19：00 / 休日 9：00～18：00\n";
+  $auto_reply_text .= "所在地: 広島県廿日市市住吉1-5-26 ローレルコート1階\n";
+  $auto_reply_text .= "TEL: 0829-30-8723\n\n";
 
- $auto_reply_text .= "ウィルサポキャンパス廿日市\n";
- $auto_reply_text .= "サービス種別: 放課後等デイサービス\n
-                      事業所番号: 3452700234\n
-                      営業時間: 平日 10：00～19：00 / 休日 9：00～18：00\n
-                      所在地: 広島県廿日市市住吉1-5-26 ローレルコート2階\n
-                      TEL: 0829-30-8724\n\n";
+  $auto_reply_text .= "ウィルサポキャンパス廿日市\n";
+  $auto_reply_text .= "サービス種別: 放課後等デイサービス\n";
+  $auto_reply_text .= "事業所番号: 3452700234\n";
+  $auto_reply_text .= "営業時間: 平日 10：00～19：00 / 休日 9：00～18：00\n";
+  $auto_reply_text .= "所在地: 広島県廿日市市住吉1-5-26 ローレルコート2階\n";
+  $auto_reply_text .= "TEL: 0829-30-8724\n\n";
 
  $auto_reply_text .= "ウィルサポ学園\n";
- $auto_reply_text .= "営業時間: 平日 10：00～12：00\n
-                      所在地: 広島県廿日市市住吉1-5-26 ローレルコート2階\n
-                      TEL: 0829-30-8724\n\n";
+ $auto_reply_text .= "営業時間: 平日 10：00～12：00\n";
+ $auto_reply_text .= "所在地: 広島県廿日市市住吉1-5-26 ローレルコート2階\n";
+ $auto_reply_text .= "TEL: 0829-30-8724\n\n";
 
  $auto_reply_text .= "ウィルサポ五日市\n";
- $auto_reply_text .= "放課後等デイサービス・児童発達支援\n
-                      事業所番号: 3450223015\n
-                      営業時間: 平日 10：00～19：00 / 休日 9：00～18：00\n
-                      所在地: 広島県広島市佐伯区五日市駅前3-3-11\n
-                      TEL: 082-236-7022\n\n";
+ $auto_reply_text .= "放課後等デイサービス・児童発達支援\n";
+ $auto_reply_text .= "事業所番号: 3450223015\n";
+ $auto_reply_text .= "営業時間: 平日 10：00～19：00 / 休日 9：00～18：00\n";
+ $auto_reply_text .= "所在地: 広島県広島市佐伯区五日市駅前3-3-11\n";
+ $auto_reply_text .= "TEL: 082-236-7022\n\n";
 
  $auto_reply_text .= "ウィルサポプラス横川\n";
- $auto_reply_text .= "サービス種別: 重心型放課後等デイサービス\n
-                      事業所番号: 3450223338\n
-                      営業時間: 平日 10：00～19：00 / 休日 9：00～18：00\n
-                      所在地: 広島県広島市西区横川新町12-13\n
-                      TEL: 082-236-6375\n";
+ $auto_reply_text .= "サービス種別: 重心型放課後等デイサービス\n";
+ $auto_reply_text .= "事業所番号: 3450223338\n";
+ $auto_reply_text .= "営業時間: 平日 10：00～19：00 / 休日 9：00～18：00\n";
+ $auto_reply_text .= "所在地: 広島県広島市西区横川新町12-13\n";
+ $auto_reply_text .= "TEL: 082-236-6375\n";
 
   // メール送信
   $auto_reply_sent = mb_send_mail($email, $auto_reply_subject, $auto_reply_text, $header);

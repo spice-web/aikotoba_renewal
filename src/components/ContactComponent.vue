@@ -34,6 +34,7 @@
 <style scoped lang="scss">
 .c-button--tel, .c-button--mail {
   width: 70%;
+  min-width: 300px;
   padding-left: 2rem;
 }
 

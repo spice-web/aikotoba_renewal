@@ -170,7 +170,7 @@ $transition-duration: .3s;
 
   // go to top
   &__goToTop {
-    position: absolute;
+    position: fixed;
     background: white;
     color: $main-color;
     width: 30px;
@@ -179,12 +179,32 @@ $transition-duration: .3s;
     border-radius: 50%;
     font-size: 1.5rem;
     text-align: center;
-    top: 20px;
-    right: 20px;
+    bottom: 5rem; // SP: フローティング時は下部固定バーより上に配置
+    right: 1rem;
     z-index: 102;
     display: flex;
     align-items: center;
     justify-content: center;
+    // スクロールで出現させる
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+
+    // 一定量スクロールしたら表示（JSで付与）
+    &.is-visible {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    // SP: フッターに差し掛かったら、元の位置（上部 top:20px）でフッターに固定
+    &.is-docked {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      bottom: auto;
+    }
 
     figure {
       width: 14.73px;
@@ -198,9 +218,15 @@ $transition-duration: .3s;
       height: 70px;
       line-height: 70px;
       font-size: 1rem;
-      top: auto;
       bottom: 2.5rem;
       right: 2rem;
+
+      // PC: フッターに差し掛かったら、元の位置（下端 bottom:2.5rem）でフッターに固定
+      &.is-docked {
+        top: auto;
+        bottom: 2.5rem;
+        right: 2rem;
+      }
 
       figure {
         width: 34.38px;

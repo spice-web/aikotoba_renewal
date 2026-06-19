@@ -30,5 +30,4 @@ coverage
 *.tsbuildinfo
 
 # ファイル
-/assets/images/PNG
-/assets/images/JPG
+受信メール_サンプル.txt

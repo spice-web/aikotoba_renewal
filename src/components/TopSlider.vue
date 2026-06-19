@@ -26,7 +26,7 @@ export default defineComponent({
       padding: '20%',
       gap: '10px',
       breakpoints: {
-        850: {
+        650: {
           padding: 0,
           gap: 0
         }

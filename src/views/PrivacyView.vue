@@ -149,16 +149,23 @@
 p {
   margin-bottom: 0;
 }
+
 h2 {
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
 }
+
 li {
   list-style-type: disc;
   // 一文字下げる
   // text-indent: 1em;
   margin-left: 1.25rem;
 }
+
+.c-title__lv3 {
+  margin-bottom: 3rem;
+}
+
 @media screen and (max-width: 850px) {
   .c-title__lv3 {
     width: 200px;

@@ -25,7 +25,7 @@
 
     @include mq() {
       // 850px(200px) 〜 1280px(365px) を vw で可変
-      width: clamp(280px, 38.3721vw - 126.1628px, 365px);
+      width: clamp(200px, 40vw - 126px, 365px);
       margin-left: min(3vw, 32px);
     }
   }
