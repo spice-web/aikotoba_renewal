@@ -3,8 +3,6 @@
   <div class="c-bg__blue">
     <div class="l-inner--lg">
       <div class="c-title__ig">Instagram</div>
-
-      <p class="center">只今、準備中です</p>
       <!-- インスタグラム投稿一覧 -->
       <div class="embedsocial-hashtag" data-ref="f3174acbb2f421746b2d442d0147a251574202e1" data-lazyload="yes">
         <a class="feed-powered-by-es feed-powered-by-es-feed-img es-widget-branding" href="https://embedsocial.jp/" target="_blank" title="EmbedSocialで作成しました" >
