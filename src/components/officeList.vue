@@ -83,7 +83,7 @@ export default {
       maps: [],
       offices: [
         {
-          category: '児童発達支援',
+          category: '児童発達支援・放課後等デイサービス',
           name: 'ウィルサポキッズ 廿日市SSTs',
           namePcLines: ['ウィルサポキッズ', '廿日市SSTs'],
           linkUrl: 'https://www.instagram.com/willsapo.kh/',
