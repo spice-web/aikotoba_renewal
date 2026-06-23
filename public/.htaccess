@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # index.html はそのまま配信
+  RewriteRule ^index\.html$ - [L]
+
+  # 実在するファイル・ディレクトリ（アセット, api/mail.php 等）はそのまま配信
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # それ以外（/about 等のSPAルート）はすべて index.html へ
+  RewriteRule ^ /index.html [L]
+</IfModule>
