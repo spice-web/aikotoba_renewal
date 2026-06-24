@@ -14,7 +14,6 @@ if (strpos($contentType, 'application/json') !== false) {
   // JSONデータを連想配列にデコード
   $data = json_decode($json_data, true);
 
-
   // フォームからデータをサニタイズして取得
   $name = isset($data['name']) ? sanitize_input($data['name']) : '';
   $kana = isset($data['kana']) ? sanitize_input($data['kana']) : '';
@@ -55,7 +54,6 @@ if (strpos($contentType, 'application/json') !== false) {
     $error[] = "「電話番号」はハイフンなしで入力してください。";
   }
 
-
   // メールアドレス
   if (
     empty($data['email'])
@@ -86,7 +84,7 @@ if (strpos($contentType, 'application/json') !== false) {
   }
 
   // メールの送信先
-  $to = "info@willsapo.laughlines.jp";
+  $to = "info@willsapo.laughlines.jp, aiwa1201cp@gmail.com";
 
   // ここにメール機能を追加する
   // 変数とタイムゾーンを初期化
@@ -98,10 +96,17 @@ if (strpos($contentType, 'application/json') !== false) {
   $admin_reply_text = null;
   date_default_timezone_set('Asia/Tokyo');
 
+  // 日本語メール用のエンコード設定
+  mb_language('Japanese');
+  mb_internal_encoding('UTF-8');
+
+  // 差出人の表示名（日本語）はMIMEエンコードしないと各メールソフトで文字化けする
+  $from_name = mb_encode_mimeheader('放課後等デイサービス・児童発達支援ウィルサポ');
+
   // へーダー情報を設定
   $header = "MIME-Version: 1.0\n";
-  $header .= "From: 放課後等デイサービス・児童発達支援ウィルサポ <noreply@willsapo.laughlines.jp>\n";
-  $header .= "Reply-To: 放課後等デイサービス・児童発達支援ウィルサポ <noreply@willsapo.laughlines.jp>\n";
+  $header .= "From: {$from_name} <noreply@willsapo.laughlines.jp>\n";
+  $header .= "Reply-To: {$from_name} <noreply@willsapo.laughlines.jp>\n";
 
   // 件名を設定
   $auto_reply_subject = 'お問い合わせありがとうございます。【放課後等デイサービス・児童発達支援ウィルサポ】';
