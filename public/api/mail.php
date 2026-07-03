@@ -64,9 +64,7 @@ if (strpos($contentType, 'application/json') !== false) {
   }
 
   // プライバシーポリシー
-  if (empty($data["agree"])) {
-    $error[] = "「プライバシーポリシー」に同意してください。";
-  } elseif ($data['agree'] !== "1") {
+  if (!$data["agree"]) {
     $error[] = "「プライバシーポリシー」に同意してください。";
   }
 
@@ -76,15 +74,15 @@ if (strpos($contentType, 'application/json') !== false) {
   }
 
   // エラーがあれば表示して終了
-  if (!empty($errors)) {
-    foreach ($errors as $error) {
-      echo $error . "<br>";
-    }
+  if (!empty($error)) {
+    echo json_encode(['errors' => $error], JSON_UNESCAPED_UNICODE);
     exit;
   }
 
   // メールの送信先
-  $to = "info@willsapo.laughlines.jp, aiwa1201cp@gmail.com";
+  // $admin_recipients = array("info@willsapo.laughlines.jp", "aiwa1201cp@gmail.com");
+  $admin_recipients = array("shinsuke.mito@gmail.com", "aiwa1201cp@gmail.com");
+
 
   // ここにメール機能を追加する
   // 変数とタイムゾーンを初期化
@@ -175,7 +173,18 @@ if (strpos($contentType, 'application/json') !== false) {
   $admin_reply_text .= "お問い合わせ内容：" . nl2br($content) . "\n\n";
 
   // メール送信
-  $admin_reply_sent = mb_send_mail($to, $admin_reply_subject, $admin_reply_text, $header);
+  $admin_reply_sent = true;
+  foreach ($admin_recipients as $recipient) {
+    $recipient = trim($recipient);
+    if ($recipient === '') {
+      continue;
+    }
+
+    if (!mb_send_mail($recipient, $admin_reply_subject, $admin_reply_text, $header)) {
+      $admin_reply_sent = false;
+      error_log("Admin mail send failed: " . $recipient);
+    }
+  }
 
   //送信結果の表示
   // 送信結果を通知

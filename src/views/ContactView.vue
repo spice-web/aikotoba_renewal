@@ -159,10 +159,13 @@ export default {
   methods: {
     submit: async function () {
       const result = await this.send()
-      this.result = result
-      if (result === '送信しました') {
+      if (result && result.errors) {
+        this.result = result.errors.join('\n')
+      } else if (result === '送信しました') {
         this.result = '送信が完了しました'
         this.clear()
+      } else {
+        this.result = '送信に失敗しました。時間をおいて再度お試しください。'
       }
     },
     send: async function () {
