@@ -106,6 +106,9 @@ if (strpos($contentType, 'application/json') !== false) {
   $header .= "From: {$from_name} <noreply@willsapo.laughlines.jp>\n";
   $header .= "Reply-To: {$from_name} <noreply@willsapo.laughlines.jp>\n";
 
+  // Return-Path（エンベロープ送信者）を noreply@willsapo.laughlines.jp に固定し、SPF も pass させる
+  $envelope = '-f noreply@willsapo.laughlines.jp';
+
   // 件名を設定
   $auto_reply_subject = 'お問い合わせありがとうございます。【放課後等デイサービス・児童発達支援ウィルサポ】';
   // 本文を設定
@@ -114,7 +117,7 @@ if (strpos($contentType, 'application/json') !== false) {
   $auto_reply_text .= "お名前: $name($kana)\n";
   $auto_reply_text .= "電話番号: $tel\n";
   $auto_reply_text .= "メールアドレス： $email\n\n";
-  $auto_reply_text .= "お問い合わせ内容: " . nl2br($content) . "\n\n\n\n";
+  $auto_reply_text .= "お問い合わせ内容: " . $content . "\n\n\n\n";
   $auto_reply_text .= "=============================================\n";
   $auto_reply_text .= "株式会社ラフラインズ\n";
   $auto_reply_text .= "住所：〒734-0023 広島市南区東雲本町1丁目14-16-1\n";
@@ -160,7 +163,7 @@ if (strpos($contentType, 'application/json') !== false) {
  $auto_reply_text .= "TEL: 082-236-6375\n";
 
   // メール送信
-  $auto_reply_sent = mb_send_mail($email, $auto_reply_subject, $auto_reply_text, $header);
+  $auto_reply_sent = mb_send_mail($email, $auto_reply_subject, $auto_reply_text, $header, $envelope);
 
   // 運営側へ送るメールの件名
   $admin_reply_subject = "HPのフォームよりお問い合わせを受け付けました";
@@ -170,7 +173,7 @@ if (strpos($contentType, 'application/json') !== false) {
   $admin_reply_text .= "お名前：" . $name  . "(" . $kana . ")\n";
   $admin_reply_text .= "電話番号：" . $tel . "\n";
   $admin_reply_text .= "メールアドレス：" . $email . "\n\n";
-  $admin_reply_text .= "お問い合わせ内容：" . nl2br($content) . "\n\n";
+  $admin_reply_text .= "お問い合わせ内容：" . $content . "\n\n";
 
   // メール送信
   $admin_reply_sent = true;
@@ -180,7 +183,7 @@ if (strpos($contentType, 'application/json') !== false) {
       continue;
     }
 
-    if (!mb_send_mail($recipient, $admin_reply_subject, $admin_reply_text, $header)) {
+    if (!mb_send_mail($recipient, $admin_reply_subject, $admin_reply_text, $header, $envelope)) {
       $admin_reply_sent = false;
       error_log("Admin mail send failed: " . $recipient);
     }
