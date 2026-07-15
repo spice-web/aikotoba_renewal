@@ -25,7 +25,7 @@ import { SITE_INFO } from '@/constants/siteInfo'
               />
             </picture>
             <div class="l-footer__logo-text">
-              放課後等デイサービス・児童発達支援
+              児童発達支援・放課後等デイサービス
               <span>ウィルサポ</span>
             </div>
           </div>

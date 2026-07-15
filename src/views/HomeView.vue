@@ -200,6 +200,7 @@ const data2 = {
 
   <!-- 事業所一覧 -->
   <div id="office" class="p-page-headline__title c-title__label c-title__label--gigyosho">事業所一覧</div>
+  <p class="c-text--gigyosho-note u-color__main">各事業所の情報は、<br class="br-sp" />Instagramアイコンよりご確認ください。</p>
   <officeList />
 </template>
 

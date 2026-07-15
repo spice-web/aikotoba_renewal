@@ -300,7 +300,7 @@ $transition-duration: .3s;
       &.p-page-headline__title {
         // width: 234px;
         margin-top: 0;
-        margin-bottom: 50px;
+        margin-bottom: 1rem;
       }
     }
   }
@@ -449,6 +449,19 @@ $transition-duration: .3s;
         width: 252px;
         height: 190px;
       }
+    }
+  }
+}
+
+.c-text {
+  &--gigyosho-note {
+    font-size: 1.125rem;
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+
+    @include mq() {
+      margin-bottom: 3rem;
     }
   }
 }

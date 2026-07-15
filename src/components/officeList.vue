@@ -22,12 +22,15 @@
               </template>
             </span>
             <template v-if="office.namePcLines">
-              <p class="office-name br-sp">{{ office.name }}</p>
-              <p class="office-name br-pc">
-                <template v-for="(line, lineIndex) in office.namePcLines" :key="lineIndex">
-                  <br v-if="lineIndex > 0" />{{ line }}
-                </template>
-              </p>
+              <div class="office-name__wrap">
+                <img :src="office.logo" alt="" class="office-icon" />
+                <p class="office-name br-sp">{{ office.name }}</p>
+                <p class="office-name br-pc">
+                  <template v-for="(line, lineIndex) in office.namePcLines" :key="lineIndex">
+                    <br v-if="lineIndex > 0" />{{ line }}
+                  </template>
+                </p>
+              </div>
             </template>
             <template v-else>
               <p class="office-name">{{ office.name }}</p>
@@ -69,6 +72,11 @@
 </template>
 
 <script>
+import logoKids from '../assets/images/logo/willsapo/logo_kids.png'
+import logoCam from '../assets/images/logo/willsapo/logo_cam.png'
+import logoGak from '../assets/images/logo/willsapo/logo_gak.png'
+import logoItsukaichi from '../assets/images/logo/willsapo/logo_itsuka.png'
+import logoYoko from '../assets/images/logo/willsapo/logo_yoko.png'
 import instaIcon from '../assets/images/icon/instaicon.webp'
 import qrSsts from '../assets/images/qr/qr_ssts.webp'
 import qrHatsukaichi from '../assets/images/qr/qr_hatsukaichi.webp'
@@ -85,6 +93,7 @@ export default {
         {
           category: '児童発達支援・放課後等デイサービス',
           name: 'ウィルサポキッズ 廿日市SSTs',
+          logo: logoKids,
           namePcLines: ['ウィルサポキッズ', '廿日市SSTs'],
           linkUrl: 'https://www.instagram.com/willsapo.kh/',
           qrImage: qrSsts,
@@ -101,6 +110,7 @@ export default {
         {
           category: '放課後等デイサービス',
           name: 'ウィルサポキャンパス 廿日市',
+          logo: logoCam,
           namePcLines: ['ウィルサポキャンパス', '廿日市'],
           linkUrl: 'https://www.instagram.com/willsapo.ch/',
           qrImage: qrHatsukaichi,
@@ -118,6 +128,7 @@ export default {
           category: '勇志国際高等学校（通信制高校）提携サポート校',
           categoryPcLines: ['勇志国際高等学校（通信制高校）', '提携サポート校'],
           name: 'ウィルサポ学園',
+          logo: logoGak,
           namePcLines: ['ウィルサポ学園'],
           mapCenter: { lat: 34.352013, lng: 132.337524 },
           items: [
@@ -128,14 +139,15 @@ export default {
           ]
         },
         {
-          category: '放課後等デイサービス・児童発達支援',
+          category: '児童発達支援・放課後等デイサービス',
           name: 'ウィルサポ 五日市',
+          logo: logoItsukaichi,
           namePcLines: ['ウィルサポ', '五日市'],
           linkUrl: 'https://www.instagram.com/willsapo.ki/',
           qrImage: qrItsukaichi,
           mapCenter: { lat: 34.370251, lng: 132.367508 },
           items: [
-            { label: 'サービス種別', value: '放課後等デイサービス・児童発達支援' },
+            { label: 'サービス種別', value: '児童発達支援、放課後等デイサービス' },
             { label: '事業所番号', value: '3450223015' },
             { label: '営業時間', value: '平日10：00～19：00\n休日9：00～18：00' },
             { label: '所在地', value: '広島県広島市佐伯区五日市駅前3-3-11' },
@@ -146,13 +158,14 @@ export default {
         {
           category: '重心型放課後等デイサービス',
           name: 'ウィルサポプラス 横川',
+          logo: logoYoko,
           namePcLines: ['ウィルサポプラス', '横川'],
           linkUrl: 'https://www.instagram.com/willsapo.plus/',
           qrImage: qrYokogawa,
           mapCenter: { lat: 34.407207, lng: 132.447159 },
           items: [
             { label: 'サービス種別', value: '重心型放課後等デイサービス' },
-            { label: '事業所番号', value: '3450223338' },
+            { label: '事業所番号', value: '3450223015' },
             { label: '営業時間', value: '平日10：00～19：00\n休日9：00～18：00' },
             { label: '所在地', value: '広島県広島市西区横川新町12-13' },
             { label: 'TEL', value: '082-236-6375' },
@@ -345,20 +358,22 @@ export default {
   padding-bottom: 0.75rem;
   margin-bottom: 0.75rem;
   border-bottom: dotted 1px #008BCD;
+
   span {
     text-align: center;
-    display: block;
+    // display: block;
     font-size: 0.875rem;
     font-weight: bold;
     letter-spacing: 0;
   }
 
   .br-pc {
-    display: none;
+    display: flex;
+    justify-content: center;
   }
 
   .br-sp {
-    display: block;
+    display: none;
   }
 
   .office-name {
@@ -367,8 +382,9 @@ export default {
 
   @media screen and (min-width: 850px) {
     min-height: 8.5rem;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 54px auto;
     justify-content: center;
     font-size: 2rem;
 
@@ -386,6 +402,12 @@ export default {
   }
 }
 
+.office-category {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .c-map {
   width: 100%;
   height: 260px;
@@ -393,6 +415,41 @@ export default {
 
   .gm-err-container {
     border-radius: 0 0 12px 12px;
+  }
+}
+
+.office-name {
+  display: flex;
+  line-height: 1;
+
+  &__wrap {
+    display: flex;
+    // flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.75rem;
+    // margin-top: 1rem;
+    gap: 0.25rem;
+
+    @media screen and (min-width: 850px) {
+      flex-direction: row;
+      justify-content: center;
+      gap: 0.5rem;
+      line-height: 1.25;
+    }
+  }
+}
+
+// 事業所ロゴ
+.office-icon {
+  display: block;
+  width: 50px;
+  height: auto;
+  margin: 0;
+  padding-top: 0.5rem;
+
+  @media screen and (min-width: 850px) {
+    width: 52px;
   }
 }
 

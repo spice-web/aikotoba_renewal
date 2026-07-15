@@ -22,7 +22,7 @@ const router = createRouter({
       component: AboutView,
       name: 'About',
       meta: {
-        title: '放課後等デイサービス・児童発達支援ウィルサポについて',
+        title: '児童発達支援・放課後等デイサービス ウィルサポについて',
         desc: 'ウィルサポでの1日の流れや放課後等デイサービスの利用料金などについてご紹介します。'
       }
     },

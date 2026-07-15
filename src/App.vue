@@ -12,7 +12,7 @@ import FooterComponent from './components/AppFooter.vue'
       <router-link :to="{ name: 'Home' }" class="l-header__logo">
         <img
           src="./assets/images/logo/wsp_logo_wide.webp"
-          alt="放課後等デイサービス・児童発達支援ウィルサポ"
+          alt="児童発達支援・放課後等デイサービスウィルサポ"
           width="100%"
           height="auto"
         />
@@ -62,9 +62,9 @@ export default {
     createTitleDesc: function (routeInstance) {
       // titleを設定する処理
       if (routeInstance.meta.title) {
-        document.title = routeInstance.meta.title + ' | 放課後等デイサービス・児童発達支援ウィルサポ'
+        document.title = routeInstance.meta.title + ' | 児童発達支援・放課後等デイサービスウィルサポ'
       } else {
-        document.title = '放課後等デイサービス・児童発達支援ウィルサポ'
+        document.title = '児童発達支援・放課後等デイサービスウィルサポ'
       }
 
       // descriptionを設定する処理
