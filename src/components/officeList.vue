@@ -148,7 +148,7 @@ export default {
           mapCenter: { lat: 34.370251, lng: 132.367508 },
           items: [
             { label: 'サービス種別', value: '児童発達支援、放課後等デイサービス' },
-            { label: '事業所番号', value: '3450223015' },
+            { label: '事業所番号', value: '3450223338' },
             { label: '営業時間', value: '平日10：00～19：00\n休日9：00～18：00' },
             { label: '所在地', value: '広島県広島市佐伯区五日市駅前3-3-11' },
             { label: 'TEL', value: '082-236-7022' },
