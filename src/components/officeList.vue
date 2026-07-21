@@ -65,18 +65,30 @@
             <img :src="office.qrImage" alt="" />
           </a>
         </div>
-        <div :ref="(el) => setMapRef(el, index)" class="c-map"></div>
+        <div class="c-map">
+          <img :src="office.exteriorImage" alt="" />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+// ロゴ
 import logoKids from '../assets/images/logo/willsapo/logo_kids.png'
 import logoCam from '../assets/images/logo/willsapo/logo_cam.png'
 import logoGak from '../assets/images/logo/willsapo/logo_gak.png'
 import logoItsukaichi from '../assets/images/logo/willsapo/logo_itsuka.png'
 import logoYoko from '../assets/images/logo/willsapo/logo_yoko.png'
+
+// 外観写真
+import photoKids from '../assets/images/exterior/kids.png'
+import photoCam from '../assets/images/exterior/campus.png'
+import photoGak from '../assets/images/exterior/gakuen.png'
+import photoItsukaichi from '../assets/images/exterior/itsukaichi.png'
+import photoYoko from '../assets/images/exterior/yokogawa.png'
+
+// QRコード
 import instaIcon from '../assets/images/icon/instaicon.webp'
 import qrSsts from '../assets/images/qr/qr_ssts.webp'
 import qrHatsukaichi from '../assets/images/qr/qr_hatsukaichi.webp'
@@ -97,7 +109,7 @@ export default {
           namePcLines: ['ウィルサポキッズ', '廿日市SSTs'],
           linkUrl: 'https://www.instagram.com/willsapo.kh/',
           qrImage: qrSsts,
-          mapCenter: { lat: 34.352013, lng: 132.337524 },
+          exteriorImage: photoKids,
           items: [
             { label: 'サービス種別', value: '児童発達支援、放課後等デイサービス' },
             { label: '事業所番号', value: '3452700226' },
@@ -114,7 +126,7 @@ export default {
           namePcLines: ['ウィルサポキャンパス', '廿日市'],
           linkUrl: 'https://www.instagram.com/willsapo.ch/',
           qrImage: qrHatsukaichi,
-          mapCenter: { lat: 34.352013, lng: 132.337524 },
+          exteriorImage: photoCam,
           items: [
             { label: 'サービス種別', value: '放課後等デイサービス' },
             { label: '事業所番号', value: '3452700234' },
@@ -130,7 +142,7 @@ export default {
           name: 'ウィルサポ学園',
           logo: logoGak,
           namePcLines: ['ウィルサポ学園'],
-          mapCenter: { lat: 34.352013, lng: 132.337524 },
+          exteriorImage: photoGak,
           items: [
             { label: '営業時間', value: '平日10：00～12：00' },
             { label: '所在地', value: '広島県廿日市市住吉1-5-26\nローレルコート2階' },
@@ -145,7 +157,7 @@ export default {
           namePcLines: ['ウィルサポ', '五日市'],
           linkUrl: 'https://www.instagram.com/willsapo.ki/',
           qrImage: qrItsukaichi,
-          mapCenter: { lat: 34.370251, lng: 132.367508 },
+          exteriorImage: photoItsukaichi,
           items: [
             { label: 'サービス種別', value: '児童発達支援、放課後等デイサービス' },
             { label: '事業所番号', value: '3450223338' },
@@ -162,7 +174,7 @@ export default {
           namePcLines: ['ウィルサポプラス', '横川'],
           linkUrl: 'https://www.instagram.com/willsapo.plus/',
           qrImage: qrYokogawa,
-          mapCenter: { lat: 34.407207, lng: 132.447159 },
+          exteriorImage: photoYoko,
           items: [
             { label: 'サービス種別', value: '重心型放課後等デイサービス' },
             { label: '事業所番号', value: '3450223015' },
@@ -410,7 +422,6 @@ export default {
 
 .c-map {
   width: 100%;
-  height: 260px;
   border-radius: 0 0 12px 12px;
 
   .gm-err-container {
