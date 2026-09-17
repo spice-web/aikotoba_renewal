@@ -80,8 +80,10 @@ if (strpos($contentType, 'application/json') !== false) {
   }
 
   // メールの送信先
-  // $admin_recipients = array("info@willsapo.laughlines.jp", "aiwa1201cp@gmail.com");
-  $admin_recipients = array("info@willsapo.laughlines.jp", "shinsuke.mito@gmail.com", "aiwa1201cp@gmail.com");
+  // $admin_recipients = array("info@laughlines.jp", "aiwa1201cp@gmail.com");
+  $admin_recipients = array("info@laughlines.jp");
+  // BCC（表示されない送信先）
+  $admin_bcc = array("shinsuke.mito@gmail.com", "mito@spice-web.jp");
 
   // ここにメール機能を追加する
   // 変数とタイムゾーンを初期化
@@ -102,11 +104,11 @@ if (strpos($contentType, 'application/json') !== false) {
 
   // へーダー情報を設定
   $header = "MIME-Version: 1.0\n";
-  $header .= "From: {$from_name} <noreply@willsapo.laughlines.jp>\n";
-  $header .= "Reply-To: {$from_name} <noreply@willsapo.laughlines.jp>\n";
+  $header .= "From: {$from_name} <noreply@laughlines.jp>\n";
+  $header .= "Reply-To: {$from_name} <noreply@laughlines.jp>\n";
 
-  // Return-Path（エンベロープ送信者）を noreply@willsapo.laughlines.jp に固定し、SPF も pass させる
-  $envelope = '-f noreply@willsapo.laughlines.jp';
+  // Return-Path（エンベロープ送信者）を noreply@laughlines.jp に固定し、SPF も pass させる
+  $envelope = '-f noreply@laughlines.jp';
 
   // 件名を設定
   $auto_reply_subject = 'お問い合わせありがとうございます。【児童発達支援・放課後等デイサービス ウィルサポ】';
@@ -126,7 +128,7 @@ if (strpos($contentType, 'application/json') !== false) {
   $auto_reply_text .= "=============================================\n";
   $auto_reply_text .= "児童発達支援・放課後等デイサービス ウィルサポ\n";
   $auto_reply_text .= "URL：https://willsapo.laughlines.jp/\n";
-  $auto_reply_text .= "E-mail：info@willsapo.laughlines.jp\n\n";
+  $auto_reply_text .= "E-mail：info@laughlines.jp\n\n";
 
   $auto_reply_text .= "ウィルサポキッズ廿日市SSTs\n";
   $auto_reply_text .= "サービス種別: 児童発達支援、放課後等デイサービス\n";
@@ -174,6 +176,10 @@ if (strpos($contentType, 'application/json') !== false) {
   $admin_reply_text .= "メールアドレス：" . $email . "\n\n";
   $admin_reply_text .= "お問い合わせ内容：" . $content . "\n\n";
 
+  // BCCは複数通に付けると重複して届くため、最初の1通だけに付与する
+  $admin_bcc = array_filter(array_map('trim', $admin_bcc));
+  $admin_bcc_header = empty($admin_bcc) ? '' : "Bcc: " . implode(', ', $admin_bcc) . "\n";
+
   // メール送信
   $admin_reply_sent = true;
   foreach ($admin_recipients as $recipient) {
@@ -182,7 +188,10 @@ if (strpos($contentType, 'application/json') !== false) {
       continue;
     }
 
-    if (!mb_send_mail($recipient, $admin_reply_subject, $admin_reply_text, $header, $envelope)) {
+    $admin_header = $header . $admin_bcc_header;
+    $admin_bcc_header = '';
+
+    if (!mb_send_mail($recipient, $admin_reply_subject, $admin_reply_text, $admin_header, $envelope)) {
       $admin_reply_sent = false;
       error_log("Admin mail send failed: " . $recipient);
     }

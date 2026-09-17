@@ -169,6 +169,8 @@
     }
   }
 
+
+  // ロゴと会社情報のラップ
   &__logo-wrap {
     @include mq() {
       display: flex;
@@ -306,6 +308,17 @@
       padding-right: 2rem;
       padding-left: 2rem;
     }
+  }
+
+  // 固定ボタン
+  &__button-wrap {
+    display: flex;
+    width: 90%;
+    gap: 1rem;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 

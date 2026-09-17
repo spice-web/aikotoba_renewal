@@ -137,28 +137,6 @@ $transition-duration: .3s;
     } 
   }
 
-  &__bottom {
-    @extend .c-button;
-    width: 270px;
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    box-shadow: none;
-    transform: translateX(-50%);
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    z-index: 102;
-    background-color: $pink;
-
-    &:active {
-      transform: translateX(-50%);
-    }
-
-    @include mq() {
-      display: none;
-    }
-  }
-
   &__main {
     display: flex;
     flex-direction: column;
@@ -445,8 +423,8 @@ $transition-duration: .3s;
 
       @include mq() {
         top: -1rem;
-        right: max(-300px, -30vw);
-        width: 252px;
+        right: max(-300px, -28vw);
+        width: 245px;
         height: 190px;
       }
     }

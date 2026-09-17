@@ -126,12 +126,40 @@ import { SITE_INFO } from '@/constants/siteInfo'
     </div>
 
     <div class="l-footer__copy">Copyright 2026.WILLSAPO</div>
-    <router-link to="/contact" class="c-button__bottom">
-      お問い合わせ
-    </router-link>
+    <div class="l-footer__button-wrap">
+      <a class="p-footer__button" href="https://laughlines.saiyo-kakaricho.com/entry/offer/list" target="_blank" rel="noopener">採用情報</a>
+      <router-link to="/contact" class="p-footer__button">
+        お問い合わせ
+      </router-link>
+    </div>
     <router-link to="/contact" class="c-button__top">
       資料請求・お問い合わせ
     </router-link>
     <ReturnTopButton />
   </footer>
 </template>
+
+<style lang="scss" scoped>
+.p-footer__button {
+  display: block;
+  width: 50%;
+  background-color: #FF5995;
+  border-radius: 8px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: 102;
+  color: white;
+  text-align: center;
+  max-width: 400px;
+  line-height: 44px;
+  font-size: 1.125rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  text-decoration: none;
+  
+  @media screen and (min-width: 850px) {
+    display: none;
+  }
+}
+
+</style>

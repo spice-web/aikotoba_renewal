@@ -4,6 +4,7 @@ import CustomDrawer from './components/DrawerMenu.vue'
 import ContactComponent from './components/ContactComponent.vue'
 import IgComponent from './components/IgComponent.vue'
 import FooterComponent from './components/AppFooter.vue'
+import RecruitComponent from './components/RecruitComponent.vue'
 </script>
 
 <template>
@@ -44,6 +45,7 @@ import FooterComponent from './components/AppFooter.vue'
   </main>
 
   <FooterComponent />
+  <RecruitComponent />
 </template>
 
 <script>
