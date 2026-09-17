@@ -167,7 +167,7 @@ if (strpos($contentType, 'application/json') !== false) {
   $auto_reply_sent = mb_send_mail($email, $auto_reply_subject, $auto_reply_text, $header, $envelope);
 
   // 運営側へ送るメールの件名
-  $admin_reply_subject = "HPのフォームよりお問い合わせを受け付けました";
+  $admin_reply_subject = "サイト【ウィルサポ】よりお問い合わせを受け付けました";
   // 本文を設定
   $admin_reply_text = "下記内容でお問い合わせがありました。\n\n";
   $admin_reply_text .= "お問い合わせ日時：" . date("Y-m-d H:i") . "\n";
