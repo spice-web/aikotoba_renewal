@@ -144,11 +144,11 @@ export default {
           namePcLines: ['ウィルサポ学園'],
           exteriorImage: photoGak,
           items: [
-            { label: '利用料金', value: '1500円（1回のご利用につき）' },
             { label: '営業時間', value: '平日10：00～12：00' },
             { label: '所在地', value: '広島県廿日市市住吉1-5-26\nローレルコート2階' },
             { label: 'TEL', value: '0829-30-8724' },
-            { label: '利用定員', value: '10名程度' }
+            { label: '利用定員', value: '10名程度' },
+            { label: '利用料金', value: '1500円（1回のご利用につき）' }
           ]
         },
         {
@@ -169,7 +169,7 @@ export default {
           ]
         },
         {
-          category: '重心型放課後等デイサービス',
+          category: '重心型児童発達支援\n重心型放課後等デイサービス',
           name: 'ウィルサポプラス 横川',
           logo: logoYoko,
           namePcLines: ['ウィルサポプラス', '横川'],
@@ -177,7 +177,7 @@ export default {
           qrImage: qrYokogawa,
           exteriorImage: photoYoko,
           items: [
-            { label: 'サービス種別', value: '重心型\n児童発達支援・放課後等デイサービス' },
+            { label: 'サービス種別', value: '重心型児童発達支援\n重心型放課後等デイサービス' },
             { label: '事業所番号', value: '3450223015' },
             { label: '営業時間', value: '平日10：00～19：00\n休日9：00～18：00' },
             { label: '所在地', value: '広島県広島市西区横川新町12-13' },
@@ -419,6 +419,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  white-space: pre-line;
 }
 
 .c-map {
