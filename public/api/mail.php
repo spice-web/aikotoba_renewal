@@ -157,7 +157,7 @@ if (strpos($contentType, 'application/json') !== false) {
  $auto_reply_text .= "TEL: 082-236-7022\n\n";
 
  $auto_reply_text .= "ウィルサポプラス横川\n";
- $auto_reply_text .= "サービス種別: 重心型児童発達支援・放課後等デイサービス\n";
+ $auto_reply_text .= "サービス種別: 重心型児童発達支援・重心型放課後等デイサービス\n";
  $auto_reply_text .= "事業所番号: 3450223015\n";
  $auto_reply_text .= "営業時間: 平日 10：00～19：00 / 休日 9：00～18：00\n";
  $auto_reply_text .= "所在地: 広島県広島市西区横川新町12-13\n";
